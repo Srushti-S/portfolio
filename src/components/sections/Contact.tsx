@@ -1,3 +1,4 @@
+/// <reference types="vite/client" />
 import { useRef, useState, useEffect } from 'react'
 import emailjs from '@emailjs/browser'
 import { gsap } from 'gsap'

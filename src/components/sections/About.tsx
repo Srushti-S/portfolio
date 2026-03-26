@@ -1,5 +1,5 @@
 import { useScrollReveal } from '@/hooks/useGSAP'
-import { personal, stats, education, skillsRow1, skillsRow2 } from '@/data/portfolio'
+import { personal, stats, skillsRow1, skillsRow2 } from '@/data/portfolio'
 
 const ACCENT = new Set(['React', 'Node.js', 'Django', 'LangChain', 'HuggingFace'])
 
