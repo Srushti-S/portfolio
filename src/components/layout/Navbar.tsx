@@ -1,114 +1,59 @@
-import { useEffect, useRef, useState } from 'react'
-import { gsap } from 'gsap'
+import { useEffect, useRef, useState } from 'react';
+import gsap from 'gsap';
 
-const links = [
-  { label: 'About',      href: '#about'      },
+const LINKS = [
+  { label: 'About',      href: '#about' },
+  { label: 'Work',       href: '#projects' },
   { label: 'Experience', href: '#experience' },
-  { label: 'Projects',   href: '#projects'   },
-  { label: 'Contact',    href: '#contact'    },
-]
+  { label: 'Contact',    href: '#contact' },
+];
 
 export default function Navbar() {
-  const navRef   = useRef<HTMLElement>(null)
-  const [scrolled, setScrolled] = useState(false)
-  const [active,   setActive]   = useState('about')
-
+  const ref = useRef<HTMLElement>(null);
+  const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
-    const el = navRef.current
-    if (!el) return
-    gsap.fromTo(
-      el.querySelectorAll('[data-nav]'),
-      { opacity: 0, y: -10 },
-      { opacity: 1, y: 0, duration: 0.8, stagger: 0.1, ease: 'power2.out', delay: 0.2 }
-    )
-  }, [])
-
-  useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 60)
-    window.addEventListener('scroll', onScroll, { passive: true })
-    return () => window.removeEventListener('scroll', onScroll)
-  }, [])
-
-  useEffect(() => {
-    const sections = links
-      .map(l => document.querySelector(l.href) as HTMLElement)
-      .filter(Boolean)
-    const obs = new IntersectionObserver(
-      entries => entries.forEach(e => { if (e.isIntersecting) setActive(e.target.id) }),
-      { threshold: 0.3 }
-    )
-    sections.forEach(s => obs.observe(s))
-    return () => obs.disconnect()
-  }, [])
+    // Animated in by useHeroReveal via .site-nav class
+    const onScroll = () => setScrolled(window.scrollY > 60);
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => window.removeEventListener('scroll', onScroll);
+  }, []);
 
   return (
-    <nav
-      ref={navRef}
-      style={{
-        position: 'fixed',
-        top: 0, left: 0, right: 0,
-        zIndex: 100,
-        padding: '1.5rem 3rem',
-        display: 'flex',
-        justifyContent: 'space-between',
-        alignItems: 'center',
-        transition: 'background 0.4s, backdrop-filter 0.4s',
-        ...(scrolled ? {
-          background: 'rgba(10,10,11,0.85)',
-          backdropFilter: 'blur(20px)',
-          borderBottom: '1px solid rgba(255,255,255,0.07)',
-        } : {}),
-      }}
+    <header
+      ref={ref}
+      style={{ opacity: 0 }}
+      className={[
+        'site-nav fixed top-0 left-0 right-0 z-50',
+        'flex items-center justify-between',
+        'px-6 md:px-10 py-5',
+        'transition-all duration-700',
+        scrolled ? 'bg-bg/75 backdrop-blur-2xl border-b border-border' : '',
+      ].join(' ')}
     >
-      {/* Logo */}
-      <a
-        data-nav
-        href="#home"
-        className="font-display font-bold text-[#f0ede8] opacity-0"
-        style={{ fontSize: '1.1rem', letterSpacing: '0.02em', textDecoration: 'none' }}
-      >
-        SS
+      {/* Left — name */}
+      <a href="#" className="text-sm font-semibold tracking-tight text-primary hover:text-accent transition-colors duration-300">
+        Srushti Sonavane
       </a>
 
-      {/* Links */}
-      <ul className="hidden md:flex items-center" style={{ gap: '2.5rem', listStyle: 'none' }}>
-        {links.map((link, i) => {
-          const isActive = active === link.href.slice(1)
-          return (
-            <li key={link.href}>
-              <a
-                data-nav
-                href={link.href}
-                className={`opacity-0 ${isActive ? 'nav-link-active' : ''}`}
-                style={{
-                  fontSize: '0.8rem',
-                  letterSpacing: '0.1em',
-                  textTransform: 'uppercase',
-                  color: isActive ? '#c8a96e' : '#8a8884',
-                  textDecoration: 'none',
-                  transition: 'color 0.3s',
-                  animationDelay: `${0.3 + i * 0.1}s`,
-                }}
-                onMouseEnter={e => { if (!isActive) (e.target as HTMLElement).style.color = '#c8a96e' }}
-                onMouseLeave={e => { if (!isActive) (e.target as HTMLElement).style.color = '#8a8884' }}
-              >
-                {link.label}
-              </a>
-            </li>
-          )
-        })}
-      </ul>
+      {/* Center — nav links (hidden on mobile) */}
+      <nav className="hidden md:flex items-center gap-8">
+        {LINKS.map(({ label, href }) => (
+          <a
+            key={label}
+            href={href}
+            className="label hover:text-primary transition-colors duration-300"
+          >
+            {label}
+          </a>
+        ))}
+      </nav>
 
-      {/* Hire me CTA */}
-      <a
-        data-nav
-        href="mailto:srushtisonavane@gmail.com"
-        className="btn btn-ghost opacity-0 hidden sm:inline-flex"
-        style={{ fontSize: '0.75rem' }}
-      >
-        Hire me ↗
-      </a>
-    </nav>
-  )
+      {/* Right — availability pill */}
+      <div className="flex items-center gap-2 rounded-full border border-border px-3.5 py-1.5">
+        <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-green-400" />
+        <span className="label text-secondary">Available for work</span>
+      </div>
+    </header>
+  );
 }

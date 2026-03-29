@@ -1,206 +1,97 @@
-import { useRef, useEffect } from 'react'
-import { gsap } from 'gsap'
-import { ScrollTrigger } from 'gsap/ScrollTrigger'
-import { useScrollReveal } from '@/hooks/useGSAP'
-import { experience } from '@/data/portfolio'
+import { useState } from 'react';
+import { useScrollReveal } from '../../hooks/useGSAP';
+import { experience } from '../../data/portfolio';
 
-gsap.registerPlugin(ScrollTrigger)
-
-type Exp = typeof experience[number]
-
-function highlightNumbers(text: string): string {
-  return text.replace(
-    /(\d[\d,]*\+?)/g,
-    '<strong style="color:#f0ede8;font-weight:400">$1</strong>'
-  )
-}
-
-function ExperienceCard({ item, index }: { item: Exp; index: number }) {
-  const cardRef = useRef<HTMLDivElement>(null)
-
-  useEffect(() => {
-    const el = cardRef.current
-    if (!el) return
-    gsap.fromTo(
-      el,
-      { opacity: 0, y: 40 },
-      {
-        opacity: 1,
-        y: 0,
-        duration: 0.85,
-        ease: 'power3.out',
-        scrollTrigger: { trigger: el, start: 'top 86%', once: true },
-      }
-    )
-  }, [])
-
-  return (
-    <div ref={cardRef} className="exp-entry group" style={{ opacity: 0 }}>
-
-      {/* ── LEFT: meta ───────────────────────────────────────────────── */}
-      <div style={{ paddingTop: '0.3rem' }}>
-
-        {/* Index */}
-        <div
-          className="font-display"
-          style={{ fontSize: '0.72rem', color: 'rgba(255,255,255,0.06)', letterSpacing: '0.1em', marginBottom: '1.5rem' }}
-        >
-          {String(index + 1).padStart(2, '0')}
-        </div>
-
-        {/* Period */}
-        <div style={{ fontSize: '0.72rem', letterSpacing: '0.06em', color: '#4a4845', marginBottom: '0.5rem', textTransform: 'uppercase' }}>
-          {item.period}
-        </div>
-
-        {/* Location */}
-        <div style={{ fontSize: '0.78rem', color: '#4a4845' }}>
-          {item.location}
-        </div>
-
-        {/* Current badge */}
-        {item.current && (
-          <div
-            style={{
-              marginTop: '1rem',
-              display: 'inline-flex',
-              alignItems: 'center',
-              gap: '0.4rem',
-              fontSize: '0.62rem',
-              letterSpacing: '0.12em',
-              textTransform: 'uppercase',
-              color: '#6dbfa0',
-              background: 'rgba(109,191,160,0.1)',
-              border: '1px solid rgba(109,191,160,0.25)',
-              borderRadius: '100px',
-              padding: '0.25rem 0.7rem',
-            }}
-          >
-            <span style={{ width: 5, height: 5, borderRadius: '50%', background: '#6dbfa0', flexShrink: 0, animation: 'pulseDot 2s ease-in-out infinite' }} />
-            Current
-          </div>
-        )}
-      </div>
-
-      {/* ── RIGHT: content ───────────────────────────────────────────── */}
-      <div>
-
-        {/* Role */}
-        <h3
-          className="font-display font-bold text-[#f0ede8]"
-          style={{ fontSize: 'clamp(1.2rem, 2vw, 1.55rem)', lineHeight: '1.2', marginBottom: '0.25rem' }}
-        >
-          {item.role}
-        </h3>
-
-        {/* Company — italic gold */}
-        <div
-          style={{
-            fontSize: '0.95rem',
-            color: '#c8a96e',
-            fontStyle: 'italic',
-            fontFamily: '"Playfair Display", Georgia, serif',
-            marginBottom: '1.6rem',
-          }}
-        >
-          {item.company}
-        </div>
-
-        {/* Bullets */}
-        <ul style={{ display: 'flex', flexDirection: 'column', gap: '0.65rem', marginBottom: '1.6rem' }}>
-          {item.bullets.map((b, i) => (
-            <li key={i} style={{ display: 'flex', alignItems: 'flex-start', gap: '0.75rem' }}>
-              <span
-                style={{
-                  width: 4, height: 4, borderRadius: '50%',
-                  background: 'rgba(200,169,110,0.45)',
-                  flexShrink: 0, marginTop: '0.62rem',
-                }}
-              />
-              <span
-                style={{ fontSize: '0.92rem', color: '#8a8884', fontWeight: 300, lineHeight: '1.8' }}
-                dangerouslySetInnerHTML={{ __html: highlightNumbers(b) }}
-              />
-            </li>
-          ))}
-        </ul>
-
-        {/* Stack chips */}
-        <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem' }}>
-          {item.stack.map(s => (
-            <span key={s} className="skill-chip" style={{ fontSize: '0.72rem', padding: '0.3rem 0.85rem' }}>
-              {s}
-            </span>
-          ))}
-        </div>
-
-      </div>
-    </div>
-  )
-}
-
-// ─── Main section ───────────────────────────────────────────────────────────
 export default function Experience() {
-  const labelRef   = useScrollReveal<HTMLDivElement>()
-  const headingRef = useScrollReveal<HTMLDivElement>({ y: 20, delay: 0.06 })
+  useScrollReveal();
+  const [open, setOpen] = useState<number>(0);
 
   return (
-    <section
-      id="experience"
-      className="relative z-10"
-      style={{ borderTop: '1px solid rgba(255,255,255,0.07)' }}
-    >
-      <div style={{ padding: '8rem 3rem' }}>
+    <section id="experience" className="px-6 py-24 md:px-10 md:py-36">
 
-        {/* Section label */}
-        <div ref={labelRef} className="section-label opacity-0">
-          Experience
-        </div>
+      {/* ── Header ── */}
+      <div className="mb-16 flex items-center gap-4">
+        <span className="sr-line block h-px w-10 bg-border" />
+        <span className="label">Experience</span>
+      </div>
 
-        {/* Header */}
-        <div
-          ref={headingRef}
-          className="exp-header flex items-end justify-between opacity-0"
-          style={{ marginBottom: '1rem' }}
-        >
-          <h2
-            className="font-display font-bold text-[#f0ede8]"
-            style={{ fontSize: 'clamp(2.2rem, 4vw, 3.2rem)', lineHeight: '1.1', letterSpacing: '-0.01em' }}
-          >
-            Where I've<br />
-            <em style={{ color: '#c8a96e', fontStyle: 'italic' }}>worked &amp; shipped</em>
-          </h2>
+      <h2 className="sr-chars text-section mb-16 text-primary">
+        Where I've worked.
+      </h2>
 
-          {/* Summary stat */}
-          <div
-            style={{
-              textAlign: 'right',
-              fontSize: '0.7rem',
-              letterSpacing: '0.1em',
-              textTransform: 'uppercase',
-              color: '#4a4845',
-              lineHeight: '1.7',
-            }}
-          >
+      {/* ── Accordion rows ── */}
+      <div className="sr-stagger divide-y divide-border border-y border-border">
+        {experience.map((job, i) => {
+          const isOpen = open === i;
+          return (
             <div
-              className="font-display font-bold text-[#f0ede8]"
-              style={{ fontSize: '2.4rem', lineHeight: '1', letterSpacing: '-0.02em', marginBottom: '0.3rem' }}
+              key={`${job.company}-${i}`}
+              className="sr-item group"
             >
-              4
+              {/* Row header — always visible, click to toggle */}
+              <button
+                onClick={() => setOpen(isOpen ? -1 : i)}
+                className="flex w-full items-center justify-between gap-6 py-7 text-left"
+              >
+                <div className="flex items-center gap-6 min-w-0">
+                  <span className="label w-7 shrink-0 text-muted">{String(i + 1).padStart(2, '0')}</span>
+                  <div className="min-w-0">
+                    <p className="truncate text-base font-semibold text-primary md:text-lg group-hover:text-accent transition-colors duration-300">
+                      {job.company}
+                    </p>
+                    <p className="label mt-0.5 text-accent">{job.role}</p>
+                  </div>
+                </div>
+                <div className="flex shrink-0 items-center gap-6">
+                  <p className="label hidden md:block">{job.period}</p>
+                  {/* Plus / minus icon */}
+                  <span className="flex h-7 w-7 items-center justify-center rounded-full border border-border text-secondary transition-all duration-300 group-hover:border-accent group-hover:text-accent">
+                    <svg width="11" height="11" viewBox="0 0 11 11" fill="none">
+                      <line x1="5.5" y1="0" x2="5.5" y2="11" stroke="currentColor" strokeWidth="1.2"
+                        style={{ transform: isOpen ? 'scaleY(0)' : 'scaleY(1)', transformOrigin: 'center', transition: 'transform 0.25s ease' }}
+                      />
+                      <line x1="0" y1="5.5" x2="11" y2="5.5" stroke="currentColor" strokeWidth="1.2" />
+                    </svg>
+                  </span>
+                </div>
+              </button>
+
+              {/* Expanded content */}
+              <div
+                style={{
+                  maxHeight: isOpen ? '600px' : '0',
+                  overflow: 'hidden',
+                  transition: 'max-height 0.5s cubic-bezier(0.4,0,0.2,1)',
+                }}
+              >
+                <div className="pl-[52px] pb-8 pr-4">
+                  {job.location && (
+                    <p className="label mb-5 text-muted">{job.location} · {job.period}</p>
+                  )}
+                  <ul className="space-y-3">
+                    {job.bullets.map((bullet, j) => (
+                      <li key={j} className="flex gap-3 text-sm leading-relaxed text-secondary">
+                        <span className="mt-1 shrink-0 text-muted">—</span>
+                        {bullet}
+                      </li>
+                    ))}
+                  </ul>
+                  {/* Stack tags */}
+                  {job.stack && (
+                    <div className="mt-6 flex flex-wrap gap-2">
+                      {job.stack.map((tag: string) => (
+                        <span key={tag} className="rounded-full border border-border px-3 py-1 text-[10px] tracking-widest uppercase text-muted">
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
+                  )}
+                </div>
+              </div>
             </div>
-            Roles across<br />industry &amp; research
-          </div>
-        </div>
-
-        {/* Divider */}
-        <div style={{ width: '100%', height: '1px', background: 'rgba(255,255,255,0.07)', margin: '3rem 0 0' }} />
-
-        {/* Entries */}
-        {experience.map((item, i) => (
-          <ExperienceCard key={`${item.company}-${i}`} item={item} index={i} />
-        ))}
-
+          );
+        })}
       </div>
     </section>
-  )
+  );
 }

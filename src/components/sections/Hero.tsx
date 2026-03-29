@@ -1,100 +1,81 @@
-import { useHeroReveal } from '@/hooks/useGSAP'
-import { personal } from '@/data/portfolio'
+import { useHeroReveal } from '../../hooks/useGSAP';
+import GlobeMesh from '../../three/GlobeMesh';
 
 export default function Hero() {
-  const ref = useHeroReveal()
+  useHeroReveal();
 
   return (
     <section
-      id="home"
-      ref={ref}
-      className="relative min-h-svh flex flex-col justify-end overflow-hidden"
-      style={{ padding: '0 3rem 5rem' }}
+      id="hero"
+      className="relative flex min-h-screen flex-col justify-between overflow-hidden px-6 pb-10 pt-28 md:px-10"
     >
-      <div>
-        {/* Eyebrow — CSS class handles ::before gold line */}
-        <div data-hero="eyebrow" className="hero-eyebrow" style={{ opacity: 0 }}>
-          {personal.title}
-        </div>
+      {/* ── Main content row ── */}
+      <div className="flex flex-1 flex-col justify-center md:flex-row md:items-center md:justify-between gap-10">
 
-        {/* Name — outer span clips, inner span slides up via GSAP */}
-        <h1
-          className="font-display font-black"
-          style={{
-            fontSize: 'clamp(3.5rem, 10vw, 9rem)',
-            lineHeight: '0.92',
-            letterSpacing: '-0.02em',
-          }}
-        >
-          {/* Line 1: Srushti — white */}
-          <span data-hero="line" className="block" style={{ overflow: 'hidden' }}>
-            <span className="block" style={{ opacity: 0 }}>
-              {personal.firstName}
-            </span>
-          </span>
+        {/* Left — big name block */}
+        <div className="flex flex-col gap-4 md:gap-6">
 
-          {/* Line 2: Sonavane — italic gold */}
-          <span data-hero="line" className="block" style={{ overflow: 'hidden' }}>
-            <span className="block italic" style={{ opacity: 0, color: '#c8a96e' }}>
-              {personal.lastName}
-            </span>
-          </span>
-        </h1>
-
-        {/* Descriptor row */}
-        <div
-          data-hero="desc"
-          className="flex items-start gap-16"
-          style={{ marginTop: '2.5rem', opacity: 0 }}
-        >
+          {/* Badge */}
           <div
-            className="font-light"
-            style={{ fontSize: '1rem', color: '#8a8884', maxWidth: '28ch', lineHeight: '1.6' }}
+            className="hero-badge flex items-center gap-2.5"
+            style={{ opacity: 0 }}
           >
-            <strong
-              className="block font-normal"
-              style={{ color: '#f0ede8', marginBottom: '0.3rem' }}
-            >
-              {personal.tagline}
-            </strong>
-            Building thoughtful software at the intersection of elegant interfaces and solid engineering.
+            <span className="h-1.5 w-1.5 rounded-full bg-accent" />
+            <span className="label">Full Stack Engineer · MS CS @ IU Bloomington</span>
           </div>
 
-          {/* CTAs */}
-          <div data-hero="cta" className="flex flex-col items-start gap-3" style={{ opacity: 0 }}>
-            <a href="#about" className="btn btn-primary">Read my story ↓</a>
-            <a href={personal.linkedin} target="_blank" rel="noopener noreferrer" className="btn btn-ghost">
-              LinkedIn ↗
-            </a>
-          </div>
+          {/* Name — each word on its own line, chars split by hook */}
+          <h1 className="overflow-hidden leading-none" aria-label="Srushti Sonavane">
+            <span
+              className="hero-name text-hero block text-primary"
+              aria-hidden="true"
+            >
+              Srushti
+            </span>
+          </h1>
+          <h1 className="overflow-hidden leading-none" aria-label="">
+            <span
+              className="hero-name text-hero block text-primary"
+              aria-hidden="true"
+            >
+              Sonavane
+            </span>
+          </h1>
+        </div>
+
+        {/* Right — 3D globe */}
+        <div className="relative h-[280px] w-[280px] shrink-0 self-center md:h-[400px] md:w-[400px]">
+          {/* Subtle glow */}
+          <div className="absolute inset-0 rounded-full bg-accent/5 blur-3xl" />
+          <GlobeMesh />
         </div>
       </div>
 
-      {/* Scroll indicator */}
+      {/* ── Bottom row — role description + scroll cue ── */}
       <div
-        className="absolute flex flex-col items-center gap-2"
-        style={{
-          bottom: '2rem',
-          right: '3rem',
-          opacity: 0,
-          animation: 'heroFadeIn 1s 1.8s forwards',
-        }}
+        className="hero-sub flex flex-col items-start justify-between gap-4 border-t border-border pt-6 md:flex-row md:items-center"
+        style={{ opacity: 0 }}
       >
-        <div className="scroll-line" />
-        <span
-          className="uppercase"
-          style={{
-            fontSize: '0.65rem',
-            letterSpacing: '0.15em',
-            color: '#4a4845',
-            writingMode: 'vertical-rl',
-          }}
-        >
-          Scroll
-        </span>
-      </div>
+        <p className="max-w-md text-sm leading-relaxed text-secondary">
+          Building fast, accessible, and delightful web experiences — from
+          REST APIs and database design to pixel-tight frontends and NLP pipelines.
+        </p>
 
-      <style>{`@keyframes heroFadeIn { to { opacity: 1; } }`}</style>
+        <div className="flex items-center gap-6">
+          <a
+            href="#projects"
+            className="label hover:text-primary transition-colors duration-300"
+          >
+            View Work ↓
+          </a>
+          <a
+            href="#contact"
+            className="label border-b border-accent pb-0.5 text-accent hover:text-primary hover:border-primary transition-colors duration-300"
+          >
+            Let's Talk
+          </a>
+        </div>
+      </div>
     </section>
-  )
+  );
 }
