@@ -1,115 +1,98 @@
 # Srushti Sonavane — Portfolio
 
-Personal portfolio built with **React 18 + TypeScript + Vite + Tailwind CSS + GSAP + React Three Fiber**.
+**Live →** [portfolio-green-three-c5504yabpy.vercel.app](https://portfolio-green-three-c5504yabpy.vercel.app/)
+
+Personal portfolio website showcasing my work, experience, and skills as a Full Stack Software Engineer pursuing an MS in Computer Science at Indiana University Bloomington.
+
+---
 
 ## Tech Stack
 
-| Layer       | Choice                       | Why                                             |
-|-------------|------------------------------|-------------------------------------------------|
-| Framework   | React 18 + TypeScript        | Industry standard; already on your resume       |
-| Build tool  | Vite 5                       | Fastest DX, modern standard                     |
-| Styling     | Tailwind CSS v3              | Most in-demand utility-first approach           |
-| Animations  | GSAP 3 + ScrollTrigger       | Same as moncy.dev; professional-grade           |
-| Smooth scroll | Lenis                      | Synced with GSAP ScrollTrigger                  |
-| 3D          | React Three Fiber + Three.js | Particle background; declarative R3F API        |
-| Contact     | EmailJS                      | No-backend email sending                        |
+| Layer | Tools |
+|---|---|
+| Framework | React 18 + TypeScript |
+| Build | Vite |
+| Animation | GSAP (ScrollTrigger), Lenis smooth scroll |
+| 3D | React Three Fiber / Three.js |
+| Styling | Plain CSS with custom properties, Geist font |
+| Contact form | EmailJS |
+| Deployment | Vercel |
 
-## Project Structure
+---
 
-```
-srushti-portfolio/
-├── public/
-│   └── favicon.svg
-├── src/
-│   ├── components/
-│   │   ├── layout/
-│   │   │   └── Navbar.tsx          
-│   │   └── sections/
-│   │       ├── Hero.tsx            
-│   │       ├── About.tsx           
-│   │       ├── Experience.tsx      
-│   │       ├── Projects.tsx        
-│   │       └── Contact.tsx         
-│   ├── data/
-│   │   └── portfolio.ts            
-│   ├── hooks/
-│   │   ├── useGSAP.ts              
-│   │   └── useLenis.ts            
-│   ├── three/
-│   │   └── ParticleBackground.tsx  
-│   ├── App.tsx
-│   ├── main.tsx
-│   └── index.css                   
-├── index.html
-├── tailwind.config.js
-├── vite.config.ts
-└── tsconfig.json
-```
+## Sections
+
+- **Landing** — Animated hero with name reveal and cycling role text
+- **About** — Bio + photo with GSAP parallax scroll
+- **Experience** — Alternating timeline with animated draw-in line
+- **My Work** — Horizontal scroll gallery with per-project SVG illustrations
+- **Tech Stack** — Dual marquee rows of skills
+- **Contact** — EmailJS-powered form + social links
+
+---
 
 ## Getting Started
 
 ```bash
-# 1. Install dependencies
+# Install dependencies
 npm install
 
-# 2. Start dev server
+# Start dev server
 npm run dev
 
-# 3. Open http://localhost:5173
+# Production build
+npm run build
 ```
 
-## Customising Content
+---
 
-**Every piece of text, link, and data lives in one file:**
+## Environment Variables
 
-```
-src/data/portfolio.ts
-```
-
-Edit `personal`, `stats`, `education`, `experience`, `projects`, and `skills` — the components read from this file automatically. No need to touch the components for content changes.
-
-## Adding Your Photo
-
-In `src/components/sections/About.tsx`, find the photo placeholder block and replace it with:
-
-```tsx
-<img
-  src="/images/your-photo.jpg"
-  alt="Srushti Sonavane"
-  className="w-full h-full object-cover object-center"
-/>
-```
-
-Then add your photo to `public/images/your-photo.jpg`.
-
-## EmailJS Setup (Contact form)
-
-1. Create an account at [emailjs.com](https://www.emailjs.com)
-2. Create a service + email template
-3. Add a `.env` file at the project root:
+Create a `.env` file in the root (see `.env.example`):
 
 ```env
-VITE_EMAILJS_SERVICE_ID=service_xxxxxxx
-VITE_EMAILJS_TEMPLATE_ID=template_xxxxxxx
-VITE_EMAILJS_PUBLIC_KEY=xxxxxxxxxxxxxxx
+VITE_EMAILJS_SERVICE_ID=your_service_id
+VITE_EMAILJS_TEMPLATE_ID=your_template_id
+VITE_EMAILJS_PUBLIC_KEY=your_public_key
 ```
 
-The Contact component (built next session) reads these automatically.
+These are configured as Environment Variables in Vercel for the deployed version.
+
+---
+
+## Project Structure
+
+```
+src/
+├── components/
+│   ├── styles/         
+│   ├── utils/          
+│   ├── About.tsx
+│   ├── Career.tsx
+│   ├── Contact.tsx
+│   ├── Cursor.tsx
+│   ├── Landing.tsx
+│   ├── MainContainer.tsx
+│   ├── Navbar.tsx
+│   ├── SocialIcons.tsx
+│   ├── TechStack.tsx
+│   ├── Work.tsx
+│   └── WorkCard.tsx     
+├── context/
+│   └── LoadingProvider.tsx
+├── data/
+│   └── portfolio.ts     
+├── three/
+│   └── Scene.tsx        
+├── App.tsx
+├── index.css            
+└── main.tsx
+```
+
+---
 
 ## Deployment
 
-### Vercel (recommended — free, fast)
-```bash
-npm run build
-```
+Deployed on **Vercel** with automatic deploys on push to `main`.
 
-### Netlify
-```bash
-npm run build
-```
-
-## Design Tokens
-
-All custom colours, fonts, and animation timings are in `tailwind.config.js` under `theme.extend`. Change the `accent` colour there to re-theme the whole site.
-
-
+Make sure to add the three `VITE_EMAILJS_*` variables under **Project → Settings → Environment Variables** in your Vercel dashboard.
