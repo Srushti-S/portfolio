@@ -1,0 +1,225 @@
+/* ─── Section ─────────────────────────────────────── */
+.career-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  z-index: 20;
+  background-color: var(--backgroundColor);
+  height: auto;
+  margin: auto;
+  margin-bottom: 200px;
+  padding: 100px 0px 80px;
+}
+
+/* ─── Heading — sits ABOVE .career-info ─── */
+.career-section h2 {
+  font-size: clamp(40px, 6vw, 70px);
+  line-height: 1;
+  font-weight: 400;
+  text-align: center;
+  color: #ffffff;
+  margin-top: 0;
+  margin-bottom: 70px;
+  position: relative;
+  z-index: 2;
+}
+.career-section h2 > span {
+  background: linear-gradient(90deg, var(--accentColor), #006aff);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-weight: 600;
+}
+
+/* ─── .career-info — the timeline anchor ─────────── */
+.career-info {
+  position: relative;   /* ← timeline positions itself inside here */
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+/* ─── Vertical line ───────────────────────────────── */
+/* Moncy: top:-50px starts it 50px above first card  */
+/* max-height:0% → animated to 100% by GsapScroll   */
+.career-timeline {
+  position: absolute;
+  top: 0;              /* starts exactly at top of first card row */
+  left: 50%;
+  transform: translateX(-50%);
+  width: 2px;
+  height: 100%;
+  background: linear-gradient(
+    to bottom,
+    var(--accentColor) 0%,
+    var(--accentColor) 88%,
+    transparent 100%
+  );
+  max-height: 0%;
+  opacity: 0;
+  /* GsapScroll animates max-height 0→100% and opacity 0→1 */
+}
+
+/* ─── Glowing dot at bottom of line ─── */
+.career-dot {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translate(-50%, 50%);
+  background-color: var(--accentColor);
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  box-shadow:
+    0 0 6px 2px var(--accentColor),
+    0 0 20px 8px rgba(0, 229, 204, 0.4),
+    0 0 60px 16px rgba(0, 229, 204, 0.15);
+  animation: dotPulse 1.2s ease-in-out infinite;
+}
+@keyframes dotPulse {
+  0%, 100% { box-shadow: 0 0 6px 2px var(--accentColor), 0 0 20px 8px rgba(0,229,204,0.35); }
+  50%       { box-shadow: 0 0 6px 2px var(--accentColor), 0 0 30px 14px rgba(0,229,204,0.2), 0 0 80px 24px rgba(0,229,204,0.08); }
+}
+
+/* Each alternating row ────────────────────────── */
+/* 3 columns: [card/empty] [60px centre] [empty/card] */
+.career-info-box {
+  display: grid;
+  grid-template-columns: 1fr 60px 1fr;
+  align-items: center;
+  min-height: 150px;
+  padding: 18px 0;
+  /* Note: initial opacity is set by GSAP (gsap.set) before mount,
+     so we don't set it here to avoid a double-zero-opacity race */
+}
+
+/* Row separator */
+.career-info-box + .career-info-box {
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+/* Even rows: card on LEFT */
+.career-box--left  { direction: ltr; }
+
+/* Odd rows: card on RIGHT (flip direction so 3rd column renders card) */
+.career-box--right { direction: rtl; }
+.career-box--right .career-card-content { direction: ltr; }
+
+/* ─── Card content — NO box/border/background ─── */
+.career-card-content {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  padding-right: 60px; /* gap from centre dot on left cards */
+}
+.career-box--right .career-card-content {
+  padding-right: 0;
+  padding-left: 60px;  /* gap from centre dot on right cards */
+}
+
+/* Date pill */
+.career-date-pill {
+  display: inline-flex;
+  align-items: center;
+  background: rgba(0, 229, 204, 0.08);
+  border: 1px solid rgba(0, 229, 204, 0.22);
+  border-radius: 50px;
+  padding: 3px 12px;
+  font-size: 12.5px;
+  font-weight: 500;
+  letter-spacing: 0.4px;
+  color: var(--accentColor);
+  width: fit-content;
+  margin-bottom: 2px;
+}
+
+/* Role */
+.career-card-content h4 {
+  font-size: 24px;
+  font-weight: 600;
+  line-height: 1.25;
+  margin: 0;
+  color: #e8eef2;
+  letter-spacing: 0.2px;
+}
+
+/* Company */
+.career-card-content h5 {
+  font-size: 16px;
+  font-weight: 400;
+  margin: 0;
+  color: var(--accentColor);
+  letter-spacing: 0.3px;
+}
+
+/* Location */
+.career-location {
+  font-size: 12px;
+  color: rgba(232, 238, 242, 0.38);
+  margin: 0;
+  letter-spacing: 0.2px;
+}
+
+/* ─── Centre dot connector ─── */
+.career-node-wrap {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  z-index: 2;
+}
+.career-node {
+  width: 13px;
+  height: 13px;
+  border-radius: 50%;
+  background: var(--backgroundColor);
+  border: 2px solid var(--accentColor);
+  box-shadow: 0 0 10px 2px rgba(0, 229, 204, 0.35);
+  flex-shrink: 0;
+}
+
+/* Empty spacer side */
+.career-side-empty { /* intentionally empty */ }
+
+/* ─── Mobile: single left-aligned column ─── */
+@media only screen and (max-width: 900px) {
+  .career-info { padding-left: 24px; }
+  .career-timeline { left: 0; transform: none; }
+
+  .career-info-box {
+    grid-template-columns: 36px 1fr;
+    direction: ltr !important;
+    padding: 14px 0;
+    min-height: auto;
+  }
+  .career-box--right .career-card-content {
+    direction: ltr;
+    padding-left: 14px;
+    padding-right: 0;
+  }
+  .career-card-content { padding-right: 0; padding-left: 14px; }
+
+  .career-node-wrap  { grid-column: 1; grid-row: 1; }
+  .career-card-content { grid-column: 2; grid-row: 1; }
+  .career-side-empty { display: none; }
+
+  .career-section    { padding: 60px 0 40px; margin-bottom: 80px; }
+  .career-container  { width: calc(100% - 30px); }
+}
+
+@media only screen and (max-width: 600px) {
+  .career-section h2   { font-size: 36px; margin-bottom: 40px; }
+  .career-card-content h4 { font-size: 16px; }
+}
+
+@media only screen and (min-width: 1025px) {
+  .career-section {
+    padding-top: 220px;
+    margin-top: -200px;
+    /* Clip the dark background so it doesn't bleed up over the about-section */
+    clip-path: inset(200px 0 0 0);
+  }
+}

@@ -1,0 +1,121 @@
+/* ─── Section wrapper ─────────────────────────────── */
+.about-section {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  position: relative;
+  z-index: 20;
+  background-color: var(--backgroundColor);
+  width: var(--cWidth);
+  max-width: 1920px;
+  margin: auto;
+  height: auto;
+  min-height: 80vh;
+  padding: 80px 0;
+}
+
+/* ─── Photo — centred within the LEFT half of the viewport ─── */
+/* Uses viewport units so it's always truly centered in the empty left area,
+   regardless of the container's padding/cWidth. */
+.about-photo-col {
+  position: absolute;
+  /* Sit in the middle of the left ~48% */
+  left: 50%;
+  top: 50%;
+  transform: translate(-140%, -50%);
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.about-photo-frame {
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 2px solid rgba(0, 229, 204, 0.22);
+  box-shadow:
+    0 0 50px 14px rgba(0, 229, 204, 0.12),
+    0 0 100px 30px rgba(0, 106, 255, 0.07);
+  background: #0d1a20;
+}
+
+.about-photo-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  display: block;
+}
+
+/* ─── Text block — right 45% ─── */
+.about-me {
+  width: 45%;
+  padding: 0;
+}
+
+.about-me h3 {
+  font-size: 25px;
+  text-transform: uppercase;
+  letter-spacing: 7px;
+  font-weight: 400;
+  color: var(--accentColor);
+  margin-bottom: 20px;
+}
+
+.about-me p {
+  font-size: 33px;
+  font-weight: 600;
+  line-height: 36px;
+  letter-spacing: 1px;
+  margin: 0;
+}
+
+/* ─── Responsive ─── */
+@media only screen and (max-width: 1400px) {
+  .about-photo-frame { width: 260px; height: 260px; }
+  .about-photo-col   { transform: translate(-130%, -50%); }
+  .about-me p        { font-size: 26px; line-height: 30px; }
+}
+
+@media only screen and (max-width: 1025px) {
+  .about-section {
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    min-height: auto;
+    padding: 50px 0 30px;
+  }
+  .about-photo-col {
+    position: relative;
+    left: auto;
+    top: auto;
+    transform: none;
+    margin-bottom: 28px;
+  }
+  .about-photo-frame { width: 160px; height: 160px; }
+  .about-me { width: 100%; max-width: calc(100% - 30px); }
+  .about-me p { font-size: 22px; line-height: 28px; }
+}
+
+@media only screen and (max-width: 600px) {
+  .about-photo-frame { width: 130px; height: 130px; }
+  .about-me p        { font-size: 18px; line-height: 24px; }
+  .about-me h3       { font-size: 18px; letter-spacing: 5px; }
+}
+
+@media only screen and (min-width: 1025px) {
+  .about-section { height: var(--vh); padding: 0; }
+  .about-me p    { font-size: 1.9vw; line-height: 2.3vw; }
+}
+
+@media only screen and (min-width: 1600px) {
+  .about-photo-frame { width: 340px; height: 340px; }
+  .about-photo-col   { transform: translate(-135%, -50%); }
+}
+
+@media only screen and (min-width: 1950px) {
+  .about-photo-frame { width: 380px; height: 380px; }
+  .about-me p        { font-size: 2.5rem; line-height: 2.7rem; }
+}
