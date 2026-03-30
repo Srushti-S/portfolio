@@ -2,9 +2,8 @@ import { useRef, useState } from "react";
 import emailjs from "@emailjs/browser";
 import "./styles/Contact.css";
 import { personal } from "../data/portfolio";
-import { MdArrowOutward, MdCopyright } from "react-icons/md";
+import { MdArrowOutward } from "react-icons/md";
 
-/// <reference types="vite/client" />
 
 const Contact = () => {
   const formRef = useRef<HTMLFormElement>(null);
@@ -37,7 +36,7 @@ const Contact = () => {
       <div className="contact-container">
         <div className="contact-grid">
 
-          {/* ── Left column ── */}
+          { }
           <div className="contact-left">
             <h2 className="contact-headline">
               Let's build<br />
@@ -49,7 +48,7 @@ const Contact = () => {
               to say hi — my inbox is always open.
             </p>
 
-            {/* Social links */}
+            { }
             <div className="contact-links">
               <a href={`mailto:${personal.email}`} className="contact-link-row" data-cursor="disable">
                 <span className="contact-link-label">EMAIL</span>
@@ -71,14 +70,14 @@ const Contact = () => {
               </a>
             </div>
 
-            {/* Availability badge */}
+            { }
             <div className="contact-badge">
               <span className="contact-badge-dot" />
               Available for opportunities · May 2026
             </div>
           </div>
 
-          {/* ── Right column — form ── */}
+          { }
           <form ref={formRef} onSubmit={handleSubmit} className="contact-form">
             <div className="contact-form-row">
               <div className="contact-field">
@@ -140,10 +139,12 @@ const Contact = () => {
           </form>
         </div>
 
-        {/* Footer */}
+        { }
         <div className="contact-footer">
           <span>Designed &amp; developed by <strong>Srushti Sonavane</strong></span>
-          <span className="contact-copy"><MdCopyright /> 2025</span>
+          <span className="contact-copy">
+            Inspired by <a href="https://www.moncy.dev/" target="_blank" rel="noreferrer">moncy.dev</a>
+          </span>
         </div>
       </div>
     </div>

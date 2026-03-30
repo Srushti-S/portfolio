@@ -1,5 +1,5 @@
 import "./styles/Work.css";
-import WorkImage from "./WorkImage";
+import WorkCard from "./WorkCard";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
@@ -61,13 +61,15 @@ const Work = () => {
                     <p>{project.stack?.slice(0, 2).join(", ")}</p>
                   </div>
                 </div>
-                <h4>Tools & features</h4>
-                <p>{project.stack?.join(", ")}</p>
+                <p className="work-stack-full">{project.stack?.join(", ")}</p>
               </div>
-              <WorkImage
-                image="/images/placeholder.webp"
-                alt={project.title}
-                link={project.github || project.live || "#"}
+              <WorkCard
+                title={project.title}
+                description={project.description}
+                stack={project.stack ?? []}
+                github={project.github}
+                live={project.live}
+                index={index}
               />
             </div>
           ))}

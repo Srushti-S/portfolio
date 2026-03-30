@@ -2,7 +2,6 @@ import {
   createContext,
   PropsWithChildren,
   useContext,
-  useEffect,
   useState,
 } from "react";
 
@@ -14,10 +13,6 @@ interface LoadingType {
 
 export const LoadingContext = createContext<LoadingType | null>(null);
 
-/**
- * Loading screen removed — renders children immediately.
- * initialFX is called from MainContainer after Lenis is ready.
- */
 export const LoadingProvider = ({
   children,
 }: PropsWithChildren<{ resumeLenis?: () => void }>) => {

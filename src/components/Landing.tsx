@@ -7,20 +7,15 @@ const Landing = ({ children }: PropsWithChildren) => {
       <div className="landing-section" id="landingDiv">
         <div className="landing-container">
 
-          {/* Left block */}
+          {}
           <div className="landing-intro">
             <h2>Hello! I'm</h2>
-            {/*
-              Two separate h1s — one per name line.
-              initialFX targets .landing-intro h1 which selects BOTH,
-              each with its own textContent, so splitChars works correctly
-              and the line break is preserved naturally.
-            */}
+            { }
             <h1 className="name-line">SRUSHTI</h1>
             <h1 className="name-line">SONAVANE</h1>
           </div>
 
-          {/* Right block — role cycling text */}
+          { }
           <div className="landing-info">
             <h3>A Passionate</h3>
             <h2 className="landing-info-h2">

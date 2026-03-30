@@ -1,15 +1,12 @@
-/* ─── Section ─────────────────────────────────────── */
 .tech-section {
   position: relative;
   z-index: 20;
   background-color: var(--backgroundColor);
   padding: 80px 0 90px;
   overflow: hidden;
-  /* Subtle top separator */
   border-top: 1px solid rgba(255, 255, 255, 0.05);
 }
 
-/* ─── Label row ─── */
 .tech-label-row {
   display: flex;
   align-items: center;
@@ -39,11 +36,9 @@
   );
 }
 
-/* ─── Marquee outer — masks overflow ─── */
 .tech-marquee-outer {
   width: 100%;
   overflow: hidden;
-  /* Fade edges so pills appear to scroll in/out of nothing */
   -webkit-mask-image: linear-gradient(
     to right,
     transparent 0%,
@@ -62,7 +57,6 @@
 }
 .tech-marquee-outer:last-child { margin-bottom: 0; }
 
-/* ─── Scrolling track ─── */
 @keyframes marquee-left  { from { transform: translateX(0); }    to { transform: translateX(-33.333%); } }
 @keyframes marquee-right { from { transform: translateX(-33.333%); } to { transform: translateX(0); } }
 
@@ -82,7 +76,6 @@
   animation-play-state: paused;
 }
 
-/* ─── Pills ─── */
 .tech-pill {
   display: inline-flex;
   align-items: center;
@@ -109,7 +102,6 @@
   background: rgba(0, 229, 204, 0.08);
 }
 
-/* Highlighted / active pills — slightly filled */
 .tech-pill--active {
   background: rgba(0, 229, 204, 0.1);
   border-color: rgba(0, 229, 204, 0.35);
@@ -122,7 +114,6 @@
   color: var(--accentColor);
 }
 
-/* ─── Mobile ─── */
 @media only screen and (max-width: 600px) {
   .tech-section { padding: 60px 0 70px; }
   .tech-pill    { font-size: 12px; height: 34px; padding: 0 16px; }

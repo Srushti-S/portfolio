@@ -8,7 +8,6 @@ gsap.registerPlugin(ScrollTrigger);
 
 const Navbar = ({ lenisRef }: { lenisRef: React.MutableRefObject<any> }) => {
   useEffect(() => {
-    // Smooth scroll to section on nav link click (uses Lenis)
     const links = document.querySelectorAll(".header ul a");
     links.forEach((elem) => {
       const element = elem as HTMLAnchorElement;
@@ -54,7 +53,7 @@ const Navbar = ({ lenisRef }: { lenisRef: React.MutableRefObject<any> }) => {
         </ul>
       </div>
 
-      {/* Ambient glow orbs — exact Moncy style */}
+      { }
       <div className="landing-circle1"></div>
       <div className="landing-circle2"></div>
       <div className="nav-fade"></div>

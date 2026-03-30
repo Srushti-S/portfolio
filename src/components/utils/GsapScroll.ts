@@ -9,7 +9,6 @@ export function setSceneTimeline() {
     return;
   }
 
-  // tl1 — landing: photo shifts left, text fades
   const tl1 = gsap.timeline({
     scrollTrigger: {
       trigger: ".landing-section",
@@ -25,7 +24,6 @@ export function setSceneTimeline() {
     .to(".landing-container", { y: "40%", duration: 0.8 }, 0)
     .fromTo(".about-me", { y: "-50%" }, { y: "0%" }, 0);
 
-  // tl2 — about: photo fades out
   const tl2 = gsap.timeline({
     scrollTrigger: {
       trigger: ".about-section",
@@ -47,8 +45,6 @@ export function setSceneTimeline() {
 }
 
 function setCareerTimeline() {
-  // Line draws in as you scroll through .career-info (the items container)
-  // trigger: ".career-info" so it starts RIGHT at the first card, below heading
   gsap.timeline({
     scrollTrigger: {
       trigger: ".career-info",
@@ -64,11 +60,10 @@ function setCareerTimeline() {
       0
     );
 
-  // Cards stagger in on enter (not scrub — fires once so they're always visible)
   gsap.set(".career-info-box", { opacity: 0, y: 20 });
   ScrollTrigger.create({
-    trigger: ".career-info",
-    start: "top 75%",
+    trigger: ".career-section",
+    start: "top 95%",
     onEnter: () => {
       gsap.to(".career-info-box", {
         opacity: 1,
@@ -80,10 +75,8 @@ function setCareerTimeline() {
     },
   });
 
-  // Dot flicker stops when fully loaded
   gsap.set(".career-dot", { animationIterationCount: "infinite" });
 
-  // Desktop section parallax
   if (window.innerWidth > 1024) {
     gsap.timeline({
       scrollTrigger: {

@@ -1,4 +1,4 @@
-/* ─── Section wrapper ─────────────────────────────── */
+
 .about-section {
   display: flex;
   align-items: center;
@@ -14,12 +14,8 @@
   padding: 80px 0;
 }
 
-/* ─── Photo — centred within the LEFT half of the viewport ─── */
-/* Uses viewport units so it's always truly centered in the empty left area,
-   regardless of the container's padding/cWidth. */
 .about-photo-col {
   position: absolute;
-  /* Sit in the middle of the left ~48% */
   left: 50%;
   top: 50%;
   transform: translate(-140%, -50%);
@@ -49,7 +45,6 @@
   display: block;
 }
 
-/* ─── Text block — right 45% ─── */
 .about-me {
   width: 45%;
   padding: 0;
@@ -72,7 +67,6 @@
   margin: 0;
 }
 
-/* ─── Responsive ─── */
 @media only screen and (max-width: 1400px) {
   .about-photo-frame { width: 260px; height: 260px; }
   .about-photo-col   { transform: translate(-130%, -50%); }

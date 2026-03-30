@@ -8,7 +8,7 @@ const About = () => {
 
   return (
     <div className="about-section" id="about">
-      {/* Photo — fixed left, same as how Moncy's character sits */}
+      {}
       <div className="about-photo-col">
         <div className="about-photo-frame">
           <img
@@ -22,7 +22,7 @@ const About = () => {
         </div>
       </div>
 
-      {/* Text — right side */}
+      {}
       <div className="about-me">
         <h3 className="title">About Me</h3>
         <p className="para">{bio}</p>

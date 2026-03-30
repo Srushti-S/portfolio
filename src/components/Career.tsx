@@ -6,24 +6,24 @@ const Career = () => {
     <div className="career-section section-container">
       <div className="career-container">
 
-        {/* Heading — sits ABOVE .career-info, so line never overlaps it */}
+        { }
         <h2>My <span>Experience</span></h2>
 
-        {/* .career-info has position:relative — timeline anchors here */}
+        { }
         <div className="career-info">
 
-          {/* Timeline line + glowing dot — positioned absolute inside .career-info */}
+          { }
           <div className="career-timeline">
             <div className="career-dot"></div>
           </div>
 
-          {/* Alternating cards */}
+          { }
           {experience.map((job, i) => (
             <div
               className={`career-info-box ${i % 2 === 0 ? "career-box--left" : "career-box--right"}`}
               key={`${job.company}-${i}`}
             >
-              {/* Card content */}
+              { }
               <div className="career-card-content">
                 <span className="career-date-pill">
                   {job.current
@@ -37,12 +37,12 @@ const Career = () => {
                 )}
               </div>
 
-              {/* Center node connector */}
+              {}
               <div className="career-node-wrap">
                 <div className="career-node"></div>
               </div>
 
-              {/* Empty spacer on the other side */}
+              { }
               <div className="career-side-empty"></div>
             </div>
           ))}

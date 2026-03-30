@@ -7,10 +7,8 @@ interface SplitElement extends HTMLElement {
   anim?: gsap.core.Animation;
   splitChars?: HTMLElement[];
   splitWords?: HTMLElement[];
-  originalHTML?: string;
 }
 
-/** Splits element text into <span> per character, returns inner spans */
 function splitIntoChars(el: HTMLElement): HTMLElement[] {
   const text = el.textContent ?? "";
   el.setAttribute("aria-label", text);
@@ -30,7 +28,6 @@ function splitIntoChars(el: HTMLElement): HTMLElement[] {
   return chars;
 }
 
-/** Splits element text into <span> per word */
 function splitIntoWords(el: HTMLElement): HTMLElement[] {
   const text = el.textContent ?? "";
   el.setAttribute("aria-label", text);
@@ -41,13 +38,13 @@ function splitIntoWords(el: HTMLElement): HTMLElement[] {
     span.style.display = "inline-block";
     span.textContent = word;
     el.appendChild(span);
-    if (i < arr.length - 1) {
-      el.appendChild(document.createTextNode(" "));
-    }
+    if (i < arr.length - 1) el.appendChild(document.createTextNode(" "));
     words.push(span);
   });
   return words;
 }
+
+let refreshListenerAdded = false;
 
 export default function setSplitText() {
   ScrollTrigger.config({ ignoreMobileResize: true });
@@ -61,12 +58,9 @@ export default function setSplitText() {
 
   paras.forEach((para: SplitElement) => {
     para.classList.add("visible");
-    if (para.anim) {
-      para.anim.progress(1).kill();
-    }
+    if (para.anim) para.anim.progress(1).kill();
     const words = splitIntoWords(para);
     para.splitWords = words;
-
     para.anim = gsap.fromTo(
       words,
       { autoAlpha: 0, y: 80 },
@@ -86,12 +80,9 @@ export default function setSplitText() {
   });
 
   titles.forEach((title: SplitElement) => {
-    if (title.anim) {
-      title.anim.progress(1).kill();
-    }
+    if (title.anim) title.anim.progress(1).kill();
     const chars = splitIntoChars(title);
     title.splitChars = chars;
-
     title.anim = gsap.fromTo(
       chars,
       { autoAlpha: 0, y: 80, rotate: 10 },
@@ -111,5 +102,8 @@ export default function setSplitText() {
     );
   });
 
-  ScrollTrigger.addEventListener("refresh", () => setSplitText());
+  if (!refreshListenerAdded) {
+    ScrollTrigger.addEventListener("refresh", () => setSplitText());
+    refreshListenerAdded = true;
+  }
 }

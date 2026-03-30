@@ -1,6 +1,5 @@
 import gsap from "gsap";
 
-/** Wraps each character in overflow:hidden + inner translateY span */
 function splitChars(el: HTMLElement): HTMLElement[] {
   const text = el.textContent ?? "";
   el.setAttribute("aria-label", text);
@@ -20,17 +19,12 @@ function splitChars(el: HTMLElement): HTMLElement[] {
 }
 
 export function initialFX(resumeLenis: () => void) {
-  // Resume smooth scroll
   resumeLenis();
-
-  // Trigger the main-active fade-in on <main>
   const mainEl = document.getElementsByTagName("main")[0];
   if (mainEl) mainEl.classList.add("main-active");
 
-  // Body background transition from white (loading screen) to dark
-  gsap.to("body", { backgroundColor: "#0b080c", duration: 0.5, delay: 1 });
+  gsap.to("body", { backgroundColor: "#05080f", duration: 0.5, delay: 1 });
 
-  // ── Animate landing intro: "Hello! I'm" + "SRUSHTI / SONAVANE" ──
   const introEls: HTMLElement[] = [
     ...Array.from(document.querySelectorAll<HTMLElement>(".landing-info h3")),
     ...Array.from(document.querySelectorAll<HTMLElement>(".landing-intro h2")),
@@ -53,7 +47,6 @@ export function initialFX(resumeLenis: () => void) {
     }
   );
 
-  // ── Animate "Engineer" role label ──
   const infoH2Els = document.querySelectorAll<HTMLElement>(".landing-h2-info");
   const infoH2Chars: HTMLElement[] = [];
   infoH2Els.forEach((el) => infoH2Chars.push(...splitChars(el)));
@@ -72,21 +65,18 @@ export function initialFX(resumeLenis: () => void) {
     }
   );
 
-  // ── "Engineer / Builder" gradient heading ──
   gsap.fromTo(
     ".landing-info-h2",
     { opacity: 0, y: 30 },
     { opacity: 1, duration: 1.2, ease: "power1.inOut", y: 0, delay: 0.8 }
   );
 
-  // ── Nav bar + social icons + nav fade gradient ──
   gsap.fromTo(
     [".header", ".icons-section", ".nav-fade"],
     { opacity: 0 },
     { opacity: 1, duration: 1.2, ease: "power1.inOut", delay: 0.1 }
   );
 
-  // ── Cycling text loop: "Engineer" ↔ "Builder" ──
   const h2Info1El = document.querySelector<HTMLElement>(".landing-h2-info-1");
   const h2_1El    = document.querySelector<HTMLElement>(".landing-h2-1");
   const h2_2El    = document.querySelector<HTMLElement>(".landing-h2-2");

@@ -34,7 +34,6 @@ const MainContainer = ({
     lenisRef.current = lenis;
     onLenisReady(lenis);
 
-    // No loader — start immediately
     lenis.start();
 
     lenis.on("scroll", ScrollTrigger.update);
@@ -46,7 +45,7 @@ const MainContainer = ({
       setSceneTimeline();
       ScrollTrigger.refresh();
       setIsDesktopView(window.innerWidth > 1024);
-      initialFX(() => {}); // hero text animations, lenis already started
+      initialFX(() => {}); 
     }, 150);
 
     const resizeHandler = () => {
