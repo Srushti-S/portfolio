@@ -18,3 +18,10 @@
   transform: translateY(-100%);
   color: var(--accentColor);
 }
+
+@media (hover: none) and (pointer: coarse) {
+  .hover-in div { display: none; }
+  .hover-link:hover .hover-in {
+    transform: none;
+  }
+}

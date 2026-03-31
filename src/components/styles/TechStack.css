@@ -118,4 +118,13 @@
   .tech-section { padding: 60px 0 70px; }
   .tech-pill    { font-size: 12px; height: 34px; padding: 0 16px; }
   .tech-marquee-track { animation-duration: 20s; }
+  .tech-label-row { padding-bottom: 32px; }
+  .tech-label { font-size: 10px; }
+}
+
+@media only screen and (max-width: 380px) {
+  .tech-section { padding: 40px 0 50px; }
+  .tech-pill    { font-size: 11px; height: 30px; padding: 0 12px; margin: 0 4px; }
+  .tech-label   { font-size: 9px; letter-spacing: 0.15em; }
+  .tech-label-row { padding-bottom: 24px; }
 }

@@ -9,7 +9,7 @@ import SocialIcons from "./SocialIcons";
 import Work from "./Work";
 import TechStack from "./TechStack";
 import setSplitText from "./utils/splitText";
-import { setSceneTimeline } from "./utils/GsapScroll";
+import { setSceneTimeline, cleanupSceneTimeline } from "./utils/GsapScroll";
 import { initialFX } from "./utils/initialFX";
 import Lenis from "lenis";
 import gsap from "gsap";
@@ -35,7 +35,6 @@ const MainContainer = ({
     onLenisReady(lenis);
 
     lenis.start();
-
     lenis.on("scroll", ScrollTrigger.update);
     gsap.ticker.add((time) => lenis.raf(time * 1000));
     gsap.ticker.lagSmoothing(0);
@@ -45,7 +44,7 @@ const MainContainer = ({
       setSceneTimeline();
       ScrollTrigger.refresh();
       setIsDesktopView(window.innerWidth > 1024);
-      initialFX(() => {}); 
+      initialFX(() => {});
     }, 150);
 
     const resizeHandler = () => {
@@ -53,12 +52,14 @@ const MainContainer = ({
       setIsDesktopView(window.innerWidth > 1024);
       ScrollTrigger.refresh();
     };
+
     window.addEventListener("resize", resizeHandler);
 
     return () => {
       clearTimeout(timer);
       window.removeEventListener("resize", resizeHandler);
       lenis.destroy();
+      cleanupSceneTimeline();
       ScrollTrigger.getAll().forEach((t) => t.kill());
     };
   }, []);

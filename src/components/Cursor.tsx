@@ -6,6 +6,10 @@ const Cursor = () => {
   const cursorRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
+    const isTouchDevice =
+      "ontouchstart" in window || navigator.maxTouchPoints > 0;
+    if (isTouchDevice) return;
+
     let hover = false;
     let rafId = 0;
     const cursor = cursorRef.current!;

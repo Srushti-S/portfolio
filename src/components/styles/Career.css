@@ -31,7 +31,7 @@
 }
 
 .career-info {
-  position: relative;   
+  position: relative;
   display: flex;
   flex-direction: column;
   width: 100%;
@@ -41,7 +41,7 @@
 
 .career-timeline {
   position: absolute;
-  top: 0;              
+  top: 0;
   left: 50%;
   transform: translateX(-50%);
   width: 2px;
@@ -54,7 +54,6 @@
   );
   max-height: 0%;
   opacity: 0;
-  
 }
 
 .career-dot {
@@ -90,7 +89,6 @@
 }
 
 .career-box--left  { direction: ltr; }
-
 .career-box--right { direction: rtl; }
 .career-box--right .career-card-content { direction: ltr; }
 
@@ -98,11 +96,11 @@
   display: flex;
   flex-direction: column;
   gap: 7px;
-  padding-right: 60px; 
+  padding-right: 60px;
 }
 .career-box--right .career-card-content {
   padding-right: 0;
-  padding-left: 60px;  
+  padding-left: 60px;
 }
 
 .career-date-pill {
@@ -189,8 +187,21 @@
 }
 
 @media only screen and (max-width: 600px) {
-  .career-section h2   { font-size: 36px; margin-bottom: 40px; }
+  .career-section h2      { font-size: 36px; margin-bottom: 40px; }
   .career-card-content h4 { font-size: 16px; }
+  .career-card-content h5 { font-size: 13px; }
+  .career-date-pill        { font-size: 11px; padding: 2px 10px; }
+  .career-location         { font-size: 11px; }
+  .career-section          { margin-bottom: 50px; }
+}
+
+@media only screen and (max-width: 380px) {
+  .career-section h2      { font-size: 28px; margin-bottom: 30px; }
+  .career-card-content h4 { font-size: 15px; }
+  .career-card-content h5 { font-size: 12px; }
+  .career-info             { padding-left: 16px; }
+  .career-card-content     { padding-left: 10px; }
+  .career-section          { padding: 40px 0 30px; }
 }
 
 @media only screen and (min-width: 1025px) {

@@ -3,81 +3,52 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 gsap.registerPlugin(ScrollTrigger);
 
+export let mm: gsap.MatchMedia | null = null;
+
 export function setSceneTimeline() {
-  if (window.innerWidth <= 1024) {
-    setCareerTimeline();
-    return;
-  }
+  mm = gsap.matchMedia();
 
-  const tl1 = gsap.timeline({
-    scrollTrigger: {
-      trigger: ".landing-section",
-      start: "top top",
-      end: "bottom top",
-      scrub: true,
-      invalidateOnRefresh: true,
-    },
-  });
-  tl1
-    .fromTo(".character-model", { x: 0 }, { x: "-25%", duration: 1 }, 0)
-    .to(".landing-container", { opacity: 0, duration: 0.4 }, 0)
-    .to(".landing-container", { y: "40%", duration: 0.8 }, 0)
-    .fromTo(".about-me", { y: "-50%" }, { y: "0%" }, 0);
+  mm.add("(min-width: 1025px)", () => {
+    const tl1 = gsap.timeline({
+      scrollTrigger: {
+        trigger: ".landing-section",
+        start: "top top",
+        end: "bottom top",
+        scrub: true,
+        invalidateOnRefresh: true,
+      },
+    });
+    tl1
+      .fromTo(".character-model", { x: 0 }, { x: "-25%", duration: 1 }, 0)
+      .to(".landing-container", { opacity: 0, duration: 0.4 }, 0)
+      .to(".landing-container", { y: "40%", duration: 0.8 }, 0)
+      .fromTo(".about-me", { y: "-50%" }, { y: "0%" }, 0);
 
-  const tl2 = gsap.timeline({
-    scrollTrigger: {
-      trigger: ".about-section",
-      start: "center 55%",
-      end: "bottom top",
-      scrub: true,
-      invalidateOnRefresh: true,
-    },
-  });
-  tl2
-    .to(".about-section", { y: "30%", duration: 6 }, 0)
-    .to(".about-section", { opacity: 0, delay: 3, duration: 2 }, 0)
-    .fromTo(".character-model", { pointerEvents: "inherit" },
-      { pointerEvents: "none", opacity: 0, duration: 4, delay: 1 }, 0)
-    .fromTo(".character-rim", { opacity: 0.6 },
-      { opacity: 0, scale: 0, y: "-70%", duration: 4, delay: 1 }, 0);
+    const tl2 = gsap.timeline({
+      scrollTrigger: {
+        trigger: ".about-section",
+        start: "center 55%",
+        end: "bottom top",
+        scrub: true,
+        invalidateOnRefresh: true,
+      },
+    });
+    tl2
+      .to(".about-section", { y: "30%", duration: 6 }, 0)
+      .to(".about-section", { opacity: 0, delay: 3, duration: 2 }, 0)
+      .fromTo(
+        ".character-model",
+        { pointerEvents: "inherit" },
+        { pointerEvents: "none", opacity: 0, duration: 4, delay: 1 },
+        0
+      )
+      .fromTo(
+        ".character-rim",
+        { opacity: 0.6 },
+        { opacity: 0, scale: 0, y: "-70%", duration: 4, delay: 1 },
+        0
+      );
 
-  setCareerTimeline();
-}
-
-function setCareerTimeline() {
-  gsap.timeline({
-    scrollTrigger: {
-      trigger: ".career-info",
-      start: "top 60%",
-      end: "bottom 55%",
-      scrub: true,
-      invalidateOnRefresh: true,
-    },
-  })
-    .fromTo(".career-timeline",
-      { maxHeight: "0%", opacity: 0 },
-      { maxHeight: "100%", opacity: 1, duration: 1 },
-      0
-    );
-
-  gsap.set(".career-info-box", { opacity: 0, y: 20 });
-  ScrollTrigger.create({
-    trigger: ".career-section",
-    start: "top 95%",
-    onEnter: () => {
-      gsap.to(".career-info-box", {
-        opacity: 1,
-        y: 0,
-        duration: 0.6,
-        ease: "power3.out",
-        stagger: 0.15,
-      });
-    },
-  });
-
-  gsap.set(".career-dot", { animationIterationCount: "infinite" });
-
-  if (window.innerWidth > 1024) {
     gsap.timeline({
       scrollTrigger: {
         trigger: ".career-section",
@@ -87,5 +58,45 @@ function setCareerTimeline() {
         invalidateOnRefresh: true,
       },
     }).fromTo(".career-section", { y: 0 }, { y: "20%", duration: 0.5 }, 0);
+  });
+
+  mm.add("all", () => {
+    gsap.timeline({
+      scrollTrigger: {
+        trigger: ".career-info",
+        start: "top 60%",
+        end: "bottom 55%",
+        scrub: true,
+        invalidateOnRefresh: true,
+      },
+    }).fromTo(
+      ".career-timeline",
+      { maxHeight: "0%", opacity: 0 },
+      { maxHeight: "100%", opacity: 1, duration: 1 },
+      0
+    );
+
+    gsap.set(".career-info-box", { opacity: 0, y: 20 });
+    ScrollTrigger.create({
+      trigger: ".career-section",
+      start: "top 95%",
+      onEnter: () => {
+        gsap.to(".career-info-box", {
+          opacity: 1,
+          y: 0,
+          duration: 0.6,
+          ease: "power3.out",
+          stagger: 0.15,
+        });
+      },
+    });
+  });
+}
+
+export function cleanupSceneTimeline() {
+  if (mm) {
+    mm.revert();
+    mm.kill();
+    mm = null;
   }
 }

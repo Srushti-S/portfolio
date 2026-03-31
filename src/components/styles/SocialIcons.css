@@ -52,8 +52,8 @@
   width: auto;
   text-wrap: nowrap;
   letter-spacing: 4px;
-  font-size: 15px;
-  line-height: 15px;
+  font-size: 13px;
+  line-height: 13px;
   font-weight: 600;
   color: #5e5e5e;
   cursor: pointer;
@@ -66,7 +66,7 @@
 }
 div.resume-button span {
   color: #fff;
-  font-size: 17px;
+  font-size: 15px;
   margin-top: -1px;
   display: flex;
   align-items: center;
@@ -80,15 +80,20 @@ div.resume-button span {
   width: 100%;
   z-index: 99999;
 }
-@media only screen and (min-width: 900px) {
-  .social-icons {
-    display: flex;
-    gap: 20px;
+
+@media only screen and (max-width: 499px) {
+  .resume-button {
+    bottom: 16px;
+    right: 4px;
+    font-size: 11px;
+    line-height: 11px;
+    letter-spacing: 3px;
   }
-  .social-icons a {
-    font-size: 28px;
+  div.resume-button span {
+    font-size: 13px;
   }
 }
+
 @media only screen and (min-width: 768px) {
   .resume-button {
     transform: none;
@@ -98,5 +103,15 @@ div.resume-button span {
   div.resume-button span {
     font-size: 23px;
     margin-top: -1.5px;
+  }
+}
+
+@media only screen and (min-width: 900px) {
+  .social-icons {
+    display: flex;
+    gap: 20px;
+  }
+  .social-icons a {
+    font-size: 28px;
   }
 }

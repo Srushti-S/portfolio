@@ -96,3 +96,22 @@
   .work-card { gap: 8px; }
   .wc-desc   { display: none; }
 }
+
+@media only screen and (max-width: 640px) {
+  .wc-visual { padding: 14px 12px 10px; border-radius: 10px; }
+  .wc-desc   { font-size: 12px; line-height: 1.6; }
+  .work-card { gap: 10px; }
+  .wc-arrow  { font-size: 16px; top: 10px; right: 12px; }
+}
+
+@media only screen and (max-width: 380px) {
+  .wc-visual { padding: 10px 8px 8px; border-radius: 8px; }
+  .wc-desc   { font-size: 11px; }
+  .work-card { gap: 8px; }
+}
+
+@media (hover: none) and (pointer: coarse) {
+  .wc-arrow {
+    color: rgba(232,238,242,0.35);
+  }
+}

@@ -48,7 +48,7 @@ let refreshListenerAdded = false;
 
 export default function setSplitText() {
   ScrollTrigger.config({ ignoreMobileResize: true });
-  if (window.innerWidth < 900) return;
+  if (window.innerWidth < 600) return;
 
   const paras: NodeListOf<SplitElement> = document.querySelectorAll(".para");
   const titles: NodeListOf<SplitElement> = document.querySelectorAll(".title");

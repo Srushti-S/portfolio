@@ -192,6 +192,7 @@
 }
 .contact-copy a:hover { color: var(--accentColor); }
 
+
 @media only screen and (max-width: 900px) {
   .contact-grid { grid-template-columns: 1fr; gap: 48px; }
   .contact-form-row { grid-template-columns: 1fr; }
@@ -201,5 +202,20 @@
 
 @media only screen and (max-width: 600px) {
   .contact-headline { font-size: 28px; }
+  .contact-sub { font-size: 13px; }
   .contact-footer { flex-direction: column; gap: 8px; text-align: center; }
+  .contact-section { padding: 50px 0 40px; }
+  .contact-input { padding: 12px 14px; font-size: 14px; }
+  .contact-submit { padding: 16px; font-size: 14px; }
+  .contact-textarea { min-height: 120px; }
+  .contact-link-value { font-size: 12px; }
+  .contact-badge { font-size: 11px; padding: 6px 14px; }
+}
+
+@media only screen and (max-width: 380px) {
+  .contact-headline { font-size: 24px; }
+  .contact-sub { font-size: 12px; line-height: 1.6; }
+  .contact-link-label { font-size: 9px; }
+  .contact-link-value { font-size: 11px; }
+  .contact-footer { font-size: 11px; margin-top: 40px; }
 }
