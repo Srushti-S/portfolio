@@ -1,6 +1,6 @@
 # Srushti Sonavane — Portfolio
 
-**Live →** [portfolio-green-three-c5504yabpy.vercel.app](https://portfolio-green-three-c5504yabpy.vercel.app/)
+**Live →** [Srushti Sonavane](https://srushtis.vercel.app/)
 
 Personal portfolio website showcasing my work, experience, and skills as a Full Stack Software Engineer pursuing an MS in Computer Science at Indiana University Bloomington.
 
