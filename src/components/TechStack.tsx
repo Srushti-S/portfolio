@@ -1,45 +1,44 @@
 import "./styles/TechStack.css";
-import { skillsRow1, skillsRow2 } from "../data/portfolio";
+import { skills } from "../data/portfolio";
 
-const highlighted = new Set(["React", "Node.js", "Python", "HuggingFace", "LangChain", "Docker"]);
+const allSkills = Object.values(skills).flat();
 
-interface MarqueeRowProps {
-  items: string[];
-  reverse?: boolean;
-}
-
-const MarqueeRow = ({ items, reverse = false }: MarqueeRowProps) => {
-  const triple = [...items, ...items, ...items];
-  return (
-    <div className="tech-marquee-outer">
-      <div className={`tech-marquee-track ${reverse ? "tech-marquee-track--reverse" : ""}`}>
-        {triple.map((item, i) => (
-          <span
-            key={`${item}-${i}`}
-            className={`tech-pill ${highlighted.has(item) ? "tech-pill--active" : ""}`}
-          >
-            {item}
-          </span>
-        ))}
-      </div>
-    </div>
-  );
+const buildInvertedRows = (items: string[]): string[][] => {
+  const total = items.length;
+  const numRows = total <= 10 ? 2 : total <= 18 ? 3 : 4;
+  const step = 2;
+  const start = Math.round((total + step * numRows * (numRows - 1) / 2) / numRows);
+  const rows: string[][] = [];
+  let idx = 0;
+  for (let i = 0; i < numRows; i++) {
+    const size = i === numRows - 1 ? total - idx : Math.max(start - i * step, 1);
+    rows.push(items.slice(idx, idx + size));
+    idx += size;
+  }
+  return rows;
 };
+
+const rows = buildInvertedRows(allSkills);
 
 const TechStack = () => {
   return (
     <section className="tech-section">
-      { }
-      <div className="tech-label-row">
-        <span className="tech-label">TECH I WORK WITH</span>
-        <div className="tech-label-line" />
+      <h2 className="tech-heading">Skills</h2>
+
+      <div className="tech-spotlight-wrap">
+        <div className="tech-spotlight-bar" />
+        <div className="tech-spotlight-glow" />
       </div>
 
-      { }
-      <MarqueeRow items={skillsRow1} />
-
-      { }
-      <MarqueeRow items={skillsRow2} reverse />
+      <div className="tech-pills-grid">
+        {rows.map((row, i) => (
+          <div key={i} className="tech-row">
+            {row.map((item) => (
+              <span key={item} className="tech-pill">{item}</span>
+            ))}
+          </div>
+        ))}
+      </div>
     </section>
   );
 };

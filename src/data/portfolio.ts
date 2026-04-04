@@ -137,12 +137,9 @@ export const projects = [
 ]
 
 export const skills = {
-  frontend: ['React', 'TypeScript', 'Next.js', 'HTML', 'CSS', 'Tailwind'],
-  backend: ['Node.js', 'Django', 'Flask', 'Spring Boot', 'PHP', 'Python'],
-  databases: ['PostgreSQL', 'MongoDB', 'MySQL', 'Redis'],
-  cloud: ['AWS', 'Azure', 'Docker', 'Kubernetes', 'CI/CD', 'GitHub'],
-  ml: ['PySpark', 'TensorFlow', 'PyTorch', 'LangChain', 'spaCy', 'NLTK', 'HuggingFace', 'OpenCV'],
+  frontend: ['React', 'JavaScript', 'TypeScript', 'HTML', 'CSS'],
+  backend: ['Node.js', 'Django', 'Flask', 'Spring Boot', 'PHP', 'Python', 'Java', 'C++'],
+  databases: ['PostgreSQL', 'MySQL', 'MongoDB', 'SQL'],
+  cloud: ['AWS', 'Azure', 'Docker', 'Kubernetes', 'CI/CD', 'Hadoop', 'Ab Initio', 'Unix Scripting'],
+  ml: ['PySpark', 'TensorFlow', 'PyTorch', 'LangChain', 'spaCy', 'NLTK', 'Keras', 'OpenCV'],
 }
-
-export const skillsRow1 = ['React', 'TypeScript', 'Node.js', 'Python', 'PostgreSQL', 'MongoDB', 'Docker', 'AWS', 'Django', 'Spring Boot', 'Next.js', 'Tailwind']
-export const skillsRow2 = ['PySpark', 'LangChain', 'HuggingFace', 'TensorFlow', 'PyTorch', 'spaCy', 'Kubernetes', 'Hadoop', 'PHP', 'MySQL', 'Flask', 'CI/CD']

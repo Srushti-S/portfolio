@@ -73,7 +73,7 @@ const Contact = () => {
             { }
             <div className="contact-badge">
               <span className="contact-badge-dot" />
-              Available for opportunities · May 2026
+              Available for opportunites 
             </div>
           </div>
 

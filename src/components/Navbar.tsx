@@ -38,13 +38,13 @@ const Navbar = ({ lenisRef }: { lenisRef: React.MutableRefObject<any> }) => {
         <a href="/#" className="navbar-title" data-cursor="disable">
           Srushti Sonavane
         </a>
-        <a
+        {/* <a
           href="mailto:srushtisonavane@gmail.com"
           className="navbar-connect"
           data-cursor="disable"
         >
           srushtisonavane@gmail.com
-        </a>
+        </a> */}
 
         { }
         <button
@@ -65,8 +65,13 @@ const Navbar = ({ lenisRef }: { lenisRef: React.MutableRefObject<any> }) => {
             </a>
           </li>
           <li>
+            <a data-href="#career" href="#career" onClick={closeMenu}>
+              <HoverLinks text="EXPERIENCE" />
+            </a>
+          </li>
+          <li>
             <a data-href="#work" href="#work" onClick={closeMenu}>
-              <HoverLinks text="WORK" />
+              <HoverLinks text="PROJECT" />
             </a>
           </li>
           <li>

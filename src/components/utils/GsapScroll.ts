@@ -9,6 +9,10 @@ export function setSceneTimeline() {
   mm = gsap.matchMedia();
 
   mm.add("(min-width: 1025px)", () => {
+    // Reset to visible at page load
+    gsap.set(".character-model", { opacity: 1, x: 0, pointerEvents: "auto" });
+    gsap.set(".character-rim", { opacity: 0 }); // rim animates in via CSS keyframe
+
     const tl1 = gsap.timeline({
       scrollTrigger: {
         trigger: ".landing-section",
@@ -19,9 +23,12 @@ export function setSceneTimeline() {
       },
     });
     tl1
-      .fromTo(".character-model", { x: 0 }, { x: "-25%", duration: 1 }, 0)
-      .to(".landing-container", { opacity: 0, duration: 0.4 }, 0)
+      // Fade out landing text
+      .to(".landing-container", { opacity: 0, duration: 0.35 }, 0)
       .to(".landing-container", { y: "40%", duration: 0.8 }, 0)
+      // Photo fades out using fromTo so reverse-scrub restores it correctly
+      .fromTo(".character-model", { opacity: 1 }, { opacity: 0, duration: 0.55, pointerEvents: "none" }, 0.3)
+      // About text rises into view
       .fromTo(".about-me", { y: "-50%" }, { y: "0%" }, 0);
 
     const tl2 = gsap.timeline({
@@ -35,19 +42,7 @@ export function setSceneTimeline() {
     });
     tl2
       .to(".about-section", { y: "30%", duration: 6 }, 0)
-      .to(".about-section", { opacity: 0, delay: 3, duration: 2 }, 0)
-      .fromTo(
-        ".character-model",
-        { pointerEvents: "inherit" },
-        { pointerEvents: "none", opacity: 0, duration: 4, delay: 1 },
-        0
-      )
-      .fromTo(
-        ".character-rim",
-        { opacity: 0.6 },
-        { opacity: 0, scale: 0, y: "-70%", duration: 4, delay: 1 },
-        0
-      );
+      .to(".about-section", { opacity: 0, delay: 3, duration: 2 }, 0);
 
     gsap.timeline({
       scrollTrigger: {

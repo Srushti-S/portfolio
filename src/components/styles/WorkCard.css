@@ -1,52 +1,50 @@
-.work-card {
+.wc-card {
   display: flex;
   flex-direction: column;
-  width: 100%;
-  flex: 1;
-  gap: 18px;
-  text-decoration: none;
-  color: inherit;
-  cursor: pointer;
+  border-radius: 14px;
+  border: 1px solid rgba(0, 229, 204, 0.12);
+  background: rgba(0, 229, 204, 0.02);
+  overflow: hidden;
+  transition: border-color 0.35s, box-shadow 0.35s, transform 0.35s;
+}
+
+.wc-card:hover {
+  border-color: rgba(0, 229, 204, 0.28);
+  box-shadow: 0 8px 40px rgba(0, 229, 204, 0.06);
+  transform: translateY(-4px);
 }
 
 .wc-visual {
   position: relative;
   width: 100%;
-  flex: 1;
-  border-radius: 14px;
-  border: 1px solid rgba(0,229,204,0.15);
+  aspect-ratio: 16 / 9;
   background:
-    linear-gradient(160deg, rgba(0,229,204,0.1) 0%, rgba(0,106,255,0.07) 50%, rgba(0,229,204,0.05) 100%),
-    rgba(255,255,255,0.06);
-  overflow: hidden;
-  transition: border-color 0.35s ease, box-shadow 0.35s ease;
+    linear-gradient(160deg, rgba(0, 229, 204, 0.12) 0%, rgba(0, 106, 255, 0.08) 50%, rgba(0, 229, 204, 0.06) 100%),
+    rgba(255, 255, 255, 0.03);
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 20px 16px 14px;
+  padding: 20px;
   box-sizing: border-box;
-}
-.work-card:hover .wc-visual {
-  border-color: rgba(0,229,204,0.26);
-  box-shadow:
-    0 0 40px rgba(0,229,204,0.06),
-    0 0 80px rgba(0,106,255,0.03),
-    inset 0 0 24px rgba(0,229,204,0.02);
+  overflow: hidden;
 }
 
 .wc-visual-glow {
   position: absolute;
-  top: -50px;
-  right: -50px;
-  width: 200px;
-  height: 200px;
+  top: -40px;
+  right: -40px;
+  width: 180px;
+  height: 180px;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(0,229,204,0.2) 0%, transparent 65%);
+  background: radial-gradient(circle, rgba(0, 229, 204, 0.18) 0%, transparent 65%);
   pointer-events: none;
-  transition: opacity 0.35s ease;
-  opacity: 0.8;
+  opacity: 0.6;
+  transition: opacity 0.35s;
 }
-.work-card:hover .wc-visual-glow { opacity: 1; }
+
+.wc-card:hover .wc-visual-glow {
+  opacity: 1;
+}
 
 .wc-illustration {
   width: 100%;
@@ -56,62 +54,130 @@
   z-index: 1;
 }
 
-.wc-arrow {
-  position: absolute;
-  top: 14px;
-  right: 16px;
-  font-size: 18px;
-  color: rgba(232,238,242,0.18);
-  transition: color 0.3s ease, transform 0.3s ease;
-  z-index: 2;
-  line-height: 1;
+.wc-body {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  padding: 24px;
+  gap: 12px;
 }
-.work-card:hover .wc-arrow {
-  color: var(--accentColor);
-  transform: translate(3px,-3px);
+
+.wc-title {
+  font-size: 17px;
+  font-weight: 600;
+  color: #e8eef2;
+  margin: 0;
+  font-family: "Geist", sans-serif;
+  line-height: 1.35;
 }
 
 .wc-desc {
   font-size: 13.5px;
   font-weight: 300;
-  line-height: 1.7;
-  color: rgba(232,238,242,0.45);
+  line-height: 1.65;
+  color: rgba(232, 238, 242, 0.42);
   margin: 0;
-  transition: color 0.3s ease;
-}
-.work-card:hover .wc-desc { color: rgba(232,238,242,0.65); }
-
-@media only screen and (max-width: 1400px) {
-  .wc-visual { padding: 16px 12px 12px; border-radius: 12px; }
-  .wc-desc   { font-size: 12.5px; }
-  .work-card { gap: 14px; }
-}
-@media only screen and (max-height: 900px) {
-  .wc-visual { padding: 14px 10px 10px; }
-  .wc-desc   { font-size: 12px; line-height: 1.6; }
-  .work-card { gap: 12px; }
-}
-@media only screen and (max-height: 650px) {
-  .wc-visual { padding: 10px 8px 8px; }
-  .work-card { gap: 8px; }
-  .wc-desc   { display: none; }
+  flex: 1;
 }
 
-@media only screen and (max-width: 640px) {
-  .wc-visual { padding: 14px 12px 10px; border-radius: 10px; }
-  .wc-desc   { font-size: 12px; line-height: 1.6; }
-  .work-card { gap: 10px; }
-  .wc-arrow  { font-size: 16px; top: 10px; right: 12px; }
+.wc-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding-top: 4px;
+}
+
+.wc-tag {
+  display: inline-flex;
+  align-items: center;
+  height: 28px;
+  padding: 0 12px;
+  border-radius: 50px;
+  border: 1px solid rgba(0, 229, 204, 0.22);
+  background: transparent;
+  color: var(--accentColor);
+  font-size: 12px;
+  font-weight: 400;
+  font-family: "Geist", sans-serif;
+  white-space: nowrap;
+  letter-spacing: 0.2px;
+}
+
+.wc-links {
+  display: flex;
+  gap: 10px;
+  padding-top: 8px;
+}
+
+.wc-link-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  height: 36px;
+  padding: 0 16px;
+  border-radius: 8px;
+  border: 1px solid rgba(232, 238, 242, 0.15);
+  background: rgba(232, 238, 242, 0.04);
+  color: #e8eef2;
+  font-size: 13px;
+  font-weight: 500;
+  font-family: "Geist", sans-serif;
+  text-decoration: none;
+  transition: border-color 0.25s, background 0.25s;
+  cursor: pointer;
+}
+
+.wc-link-btn:hover {
+  border-color: rgba(0, 229, 204, 0.4);
+  background: rgba(0, 229, 204, 0.06);
+}
+
+.wc-link-btn--live {
+  border-color: rgba(0, 229, 204, 0.3);
+  color: var(--accentColor);
+}
+
+.wc-link-btn--live:hover {
+  background: rgba(0, 229, 204, 0.1);
+}
+
+@media only screen and (max-width: 768px) {
+  .wc-body {
+    padding: 20px;
+  }
+
+  .wc-title {
+    font-size: 16px;
+  }
+
+  .wc-desc {
+    font-size: 13px;
+  }
 }
 
 @media only screen and (max-width: 380px) {
-  .wc-visual { padding: 10px 8px 8px; border-radius: 8px; }
-  .wc-desc   { font-size: 11px; }
-  .work-card { gap: 8px; }
-}
+  .wc-body {
+    padding: 16px;
+    gap: 10px;
+  }
 
-@media (hover: none) and (pointer: coarse) {
-  .wc-arrow {
-    color: rgba(232,238,242,0.35);
+  .wc-title {
+    font-size: 15px;
+  }
+
+  .wc-desc {
+    font-size: 12px;
+  }
+
+  .wc-tag {
+    font-size: 11px;
+    height: 26px;
+    padding: 0 10px;
+  }
+
+  .wc-link-btn {
+    font-size: 12px;
+    height: 34px;
+    padding: 0 14px;
   }
 }
