@@ -73,7 +73,7 @@ export const experience = [
     stack: ['PySpark', 'Hadoop', 'ETL', 'Cloud', 'Python'],
   },
   {
-    role: 'NLP Intern',
+    role: 'NLP Research Intern',
     company: 'L3Cube',
     location: 'Pune, India',
     period: 'Jun 2023 – Jul 2024',
@@ -87,7 +87,7 @@ export const experience = [
     stack: ['Python', 'HuggingFace', 'Transformers', 'spaCy', 'NLP'],
   },
   {
-    role: 'NLP Intern',
+    role: 'ML Research Intern',
     company: 'CAILMD, PICT',
     location: 'Pune, India',
     period: 'Jun 2023 – Jul 2024',
