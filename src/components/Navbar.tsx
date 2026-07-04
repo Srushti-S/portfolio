@@ -39,15 +39,6 @@ const Navbar = ({ lenisRef }: { lenisRef: React.MutableRefObject<Lenis | null> }
         <a href="/#" className="navbar-title" data-cursor="disable">
           Srushti Sonavane
         </a>
-        {/* <a
-          href="mailto:srushtisonavane@gmail.com"
-          className="navbar-connect"
-          data-cursor="disable"
-        >
-          srushtisonavane@gmail.com
-        </a> */}
-
-        { }
         <button
           className="nav-hamburger"
           onClick={() => setMenuOpen((o) => !o)}
@@ -83,10 +74,8 @@ const Navbar = ({ lenisRef }: { lenisRef: React.MutableRefObject<Lenis | null> }
         </ul>
       </div>
 
-      {}
       {menuOpen && <div className="nav-overlay" onClick={closeMenu} />}
 
-      { }
       <div className="landing-circle1"></div>
       <div className="landing-circle2"></div>
       <div className="nav-fade"></div>

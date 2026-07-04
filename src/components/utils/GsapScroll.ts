@@ -9,9 +9,8 @@ export function setSceneTimeline() {
   mm = gsap.matchMedia();
 
   mm.add("(min-width: 1025px)", () => {
-    // Reset to visible at page load
     gsap.set(".character-model", { opacity: 1, x: 0, pointerEvents: "auto" });
-    gsap.set(".character-rim", { opacity: 0 }); // rim animates in via CSS keyframe
+    gsap.set(".character-rim", { opacity: 0 });
 
     const tl1 = gsap.timeline({
       scrollTrigger: {
@@ -23,12 +22,9 @@ export function setSceneTimeline() {
       },
     });
     tl1
-      // Fade out landing text
       .to(".landing-container", { opacity: 0, duration: 0.35 }, 0)
       .to(".landing-container", { y: "40%", duration: 0.8 }, 0)
-      // Photo fades out using fromTo so reverse-scrub restores it correctly
       .fromTo(".character-model", { opacity: 1 }, { opacity: 0, duration: 0.55, pointerEvents: "none" }, 0.3)
-      // About text rises into view
       .fromTo(".about-me", { y: "-50%" }, { y: "0%" }, 0);
 
     const tl2 = gsap.timeline({
