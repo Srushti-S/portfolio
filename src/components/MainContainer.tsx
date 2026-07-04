@@ -17,12 +17,9 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 gsap.registerPlugin(ScrollTrigger);
 
-const MainContainer = ({
-  children,
-  onLenisReady,
-}: PropsWithChildren<{ onLenisReady: (lenis: any) => void }>) => {
+const MainContainer = ({ children }: PropsWithChildren) => {
   const [isDesktopView, setIsDesktopView] = useState(window.innerWidth > 1024);
-  const lenisRef = useRef<any>(null);
+  const lenisRef = useRef<Lenis | null>(null);
 
   useEffect(() => {
     const lenis = new Lenis({
@@ -32,7 +29,6 @@ const MainContainer = ({
       smoothWheel: true,
     });
     lenisRef.current = lenis;
-    onLenisReady(lenis);
 
     lenis.start();
     lenis.on("scroll", ScrollTrigger.update);

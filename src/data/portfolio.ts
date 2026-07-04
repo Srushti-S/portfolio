@@ -131,8 +131,8 @@ export const projects = [
     title: "Pulzion'23 Event Management System",
     description: 'High-traffic event management system handling thousands of registrations with optimised backend APIs and database queries for reliable performance under peak load.',
     stack: ['Node.js', 'PostgreSQL', 'Next.js'],
-    github: 'https://pict.acm.org/pulzion/',
-    live: '',
+    github: '',
+    live: 'https://pict.acm.org/pulzion/',
     highlight: false,
   },
 ]

@@ -14,8 +14,8 @@ const Scene = () => {
             onError={() => setImgError(true)}
           />
         ) : (
-           <div className="photo-placeholder">
-            add photo.jpg
+          <div className="photo-placeholder" aria-hidden="true">
+            SS
           </div>
         )}
       </div>

@@ -9,7 +9,7 @@ const App = () => {
   return (
     <LoadingProvider>
       <Suspense>
-        <MainContainer onLenisReady={() => {}}>
+        <MainContainer>
           <Suspense>
             <Scene />
           </Suspense>
