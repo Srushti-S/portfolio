@@ -3,7 +3,9 @@
   max-width: var(--cMaxWidth);
   width: var(--cWidth);
   bottom: 0;
-  z-index: 99;
+  /* fixed elements form their own stacking context, so this must beat
+     .cursor-main (z-index 99999) for the icons to paint over the cursor pill */
+  z-index: 100000;
   left: 50%;
   transform: translateX(-50%);
 }
@@ -16,9 +18,9 @@
   gap: 8px;
   z-index: 999;
   padding: 10px;
+  transition: color 0.3s;
 }
 .social-icons:hover {
-  transition: 0.3s;
   color: var(--backgroundColor);
 }
 .social-icons a:hover {
