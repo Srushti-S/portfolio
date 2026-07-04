@@ -5,8 +5,8 @@ export const personal = {
   title: 'Full Stack Software Engineer',
   tagline: 'React · Node.js · Backend Systems',
   bio: [
-    "Hi — I'm Srushti, a Full Stack Software Engineer currently pursuing my Master's in Computer Science at Indiana University Bloomington, where I also work as a Web Developer helping 70+ academic departments ship better digital experiences.",
-    "I care deeply about the craft — whether that's a clean REST API, a pixel-tight frontend, or an AI agent that cuts response time from 48 hours to under 2 minutes. I've built production systems at scale: from a government teacher-training portal serving 550,000+ teachers at TriFrnd, to PySpark ETL pipelines at Barclays, to microservices architectures and LLM-backed tools.",
+    "Hi — I'm Srushti, a full-stack engineer with a Master's in Computer Science from Indiana University Bloomington, where I spent a year building web systems for the Graduate School that 70+ departments use. Right now I'm at the DSAIL Lab, researching security for agentic AI.",
+    "Most of what I know comes from shipping real things: a teacher-training portal for the Maharashtra State Government that 550,000+ teachers register through, a chatbot on the IU website that answers thousands of student questions a day, and ETL pipelines at Barclays that moved financial compliance data from Hadoop to AWS. On the research side, I've published twice at ACL Anthology — first author in 2024 — mostly on NLP for low-resource languages.",
     "Outside code, I'm energised by hard problems, good coffee, and the quiet satisfaction of a system that just works.",
   ],
   email: 'srushtisonavane@gmail.com',
@@ -18,10 +18,10 @@ export const personal = {
 }
 
 export const stats = [
-  { number: '3.77', suffix: '/4', label: 'GPA at IU Bloomington' },
-  { number: '550K', suffix: '+', label: 'Teachers served via TriFrnd portal' },
-  { number: '150', suffix: '+', label: 'Engineering tickets resolved' },
-  { number: '70', suffix: '+', label: 'Academic departments supported' },
+  { number: '3.8', suffix: '/4', label: 'GPA at IU Bloomington' },
+  { number: '550K', suffix: '+', label: 'Teachers on the TriFrnd portal' },
+  { number: '2', suffix: '', label: 'ACL Anthology publications' },
+  { number: '70', suffix: '+', label: 'University departments served' },
 ]
 
 export const education = [
@@ -29,17 +29,17 @@ export const education = [
     degree: 'Master of Science in Computer Science',
     school: 'Indiana University Bloomington',
     location: 'Bloomington, Indiana · USA',
-    gpa: '3.77 / 4.0',
+    gpa: '3.8 / 4.0',
     period: 'Aug 2024 – May 2026',
     coursework: ['Software Engineering', 'Algorithms', 'Operating Systems', 'Databases', 'Machine Learning'],
     badge: 'MS · Computer Science',
   },
   {
     degree: 'Bachelor of Engineering in Computer Engineering',
-    school: 'Pune University',
+    school: 'Savitribai Phule Pune University',
     location: 'Pune, Maharashtra · India',
     gpa: '8.7 / 10',
-    period: 'Oct 2021 – May 2024',
+    period: 'Sep 2021 – Jun 2024',
     coursework: ['Data Structures', 'Computer Networks', 'Object Programming', 'Cloud', 'Distributed Systems'],
     badge: 'BE · Computer Engineering',
   },
@@ -47,18 +47,70 @@ export const education = [
 
 export const experience = [
   {
-    role: 'Web Developer',
-    company: 'Indiana University',
+    role: 'Research Assistant · Agentic AI Security',
+    company: 'DSAIL Lab, Indiana University',
     location: 'Bloomington, USA',
-    period: 'May 2025 – May 2026',
+    period: 'Jan 2026 – Present',
     current: true,
     bullets: [
-      'Deployed a student-facing chatbot using MCP Server and an A2A agent framework, routing incoming queries through an automated classification and resolution pipeline with staff escalation for unhandled cases, reducing average query response time from 48 hours to under 2 minutes.',
-      'Built and deployed production web applications and PHP/MySQL-backed workflow automation tools, replacing manual form-handling processes with automated XML-driven data pipelines across 70+ academic departments and reducing administrative overhead by 3 hours per department per week.',
-      'Diagnosed recurring eDocs defects by instrumenting PHP server logs and MySQL query traces to identify root-cause patterns across 150+ reported tickets, introducing input validation guards and parameterised query rewrites that eliminated the defect class with zero critical regressions across subsequent releases.',
-      'Migrated 13 legacy applications to the Fireform platform by building shared PHP form-handling abstraction layers over XML schemas, achieving 100% data integrity across all 13 deployments with zero rollbacks.',
+      'Contributing to the agent coordination layer of an LLM-RL red teaming framework for AI-enabled SOAR systems, where I replaced the decoupled planner-controller handoff with a real-time feedback loop that adapts attack strategies across episodes.',
+      'Surveyed 12 AI agent skill platforms and compared vulnerability scanners (Snyk, Cisco, LlamaFirewall, AQtive Guard) for the first academic security study of the agent skills ecosystem, covering 900,000+ skills.',
     ],
-    stack: ['JavaScript', 'PHP', 'MySQL', 'React', 'XML', 'MCP Server', 'A2A'],
+    stack: ['Python', 'Reinforcement Learning', 'LLM Agents'],
+  },
+  {
+    role: 'Software Engineer (Graduate Assistant)',
+    company: 'Indiana University Graduate School',
+    location: 'Bloomington, USA',
+    period: 'May 2025 – May 2026',
+    current: false,
+    bullets: [
+      'Shipped a live AI chatbot on the Indiana University website that answers thousands of student queries a day across 70+ colleges and departments. Graduate School office walk-ins dropped by 60%.',
+      'The chatbot runs on an A2A multi-agent architecture: a routing agent backed by Azure LLM classifies each query and hands it to department-specific agents, with an MCP server supplying live university data.',
+      'Migrated 13 legacy university applications to shared PHP abstraction layers over XML schemas, and verified each migration with automated record-count checks.',
+      'Replaced manual form-handling across 70+ departments with PHP/MySQL pipelines; coordinators now use a centralised submission dashboard instead of keying in data by hand.',
+    ],
+    stack: ['PHP', 'MySQL', 'Azure', 'Kubernetes', 'MCP Server', 'A2A'],
+  },
+  {
+    role: 'Software Engineer',
+    company: 'TriFrnd (Maharashtra State Government)',
+    location: 'Pune, India',
+    period: 'Sep 2023 – Jun 2024',
+    current: false,
+    bullets: [
+      'Built and ran the state teacher-training registration portal on Next.js, Node.js, and PostgreSQL: a stateless API layer serving concurrent traffic from 550,000+ registered teachers across 35 districts.',
+      'Wrote a Node.js batch allocation engine that assigns teachers across 960 training batches, replacing a fully manual coordination process with real-time dashboards and audit trails.',
+      'Set up role-based access control across three permission tiers; every district rollout was gated by Jest integration tests before going live.',
+      'Implemented a two-channel OTP verification flow with eligibility checks that blocked duplicate and invalid submissions across 40,000+ registrations.',
+    ],
+    stack: ['Next.js', 'Node.js', 'PostgreSQL', 'Jest'],
+  },
+  {
+    role: 'NLP Research Intern (Part-time)',
+    company: 'L3Cube',
+    location: 'Pune, India',
+    period: 'Jun 2023 – Jul 2024',
+    current: false,
+    bullets: [
+      'Built and published mahaNLP to PyPI, an NLP toolkit for low-resource Marathi text covering preprocessing, semantic similarity, and tokenization with transformer embeddings.',
+      "Compiled 30+ text classification datasets across 10 low-resource Indic languages and published them to HuggingFace, where they've picked up 500+ downloads.",
+      'Co-authored L3Cube-IndicNews: News-based Short Text and Document Classification in Indic Languages (ACL Anthology 2023).',
+    ],
+    stack: ['Python', 'HuggingFace', 'Transformers', 'PyPI'],
+  },
+  {
+    role: 'ML Research Intern (Part-time)',
+    company: 'CAILMD, PICT',
+    location: 'Pune, India',
+    period: 'Jun 2023 – Jul 2024',
+    current: false,
+    bullets: [
+      'Fine-tuned multilingual BERT for text classification with FP16 mixed-precision training and cut GPU training time by 30% with no accuracy loss.',
+      'Trained an accent classification model on 1,600+ audio samples using spectral feature extraction across 5 linguistic categories.',
+      'First-authored the SemEval-2024 paper on multilingual semantic textual relatedness (ACL Anthology 2024), leading model development and benchmarking across low-resource language pairs.',
+    ],
+    stack: ['PyTorch', 'BERT', 'Python'],
   },
   {
     role: 'Software Engineering Intern',
@@ -67,45 +119,17 @@ export const experience = [
     period: 'Jun 2023 – Aug 2023',
     current: false,
     bullets: [
-      'Built a PySpark ETL pipeline migrating multi-terabyte financial datasets from Hadoop to cloud infrastructure, cutting average analytics query latency by 4 seconds per query measured against baseline execution times on the pre-migration analytics layer.',
-      'Processed multi-terabyte Hadoop datasets through PySpark transformation pipelines handling schema normalisation and field-level data mapping, eliminating manual intervention from 3 weekly compliance reporting cycles and enabling fully automated report generation.',
-      'Developed and documented distributed PySpark data processing workflows with reusable pipeline abstractions adopted by 2 internal engineering teams, standardising scalable data processing patterns across enterprise compliance reporting pipelines.',
+      'Engineered a PySpark ETL pipeline to migrate multi-terabyte financial compliance datasets (FCA, GDPR, and financial crime reporting) from on-premise Hadoop clusters to AWS.',
+      'Packaged reusable PySpark utility modules for logging, partitioning, and error handling; two other data engineering teams adopted them as their standard template.',
     ],
-    stack: ['PySpark', 'Hadoop', 'ETL', 'Cloud', 'Python', 'Ab Initio'],
-  },
-  {
-    role: 'NLP Research Intern',
-    company: 'L3Cube',
-    location: 'Pune, India',
-    period: 'Jun 2023 – Jul 2024',
-    current: false,
-    bullets: [
-      'Built NLP data processing pipelines and similarity search systems for Marathi text, improving preprocessing quality using transformer-based models',
-      'Designed and implemented workflows for multilingual dataset curation and preprocessing across 10 low-resource Indic languages',
-      'Fine-tuned transformer-based models and released reproducible datasets and models on HuggingFace and GitHub',
-      'Published: L3Cube-IndicNews: News-based Document Classification in Indic languages, ACL Anthology 2023',
-    ],
-    stack: ['Python', 'HuggingFace', 'Transformers', 'spaCy', 'NLP'],
-  },
-  {
-    role: 'ML Research Intern',
-    company: 'CAILMD, PICT',
-    location: 'Pune, India',
-    period: 'Jun 2023 – Jul 2024',
-    current: false,
-    bullets: [
-      'Optimized transformer-based document classification models, improving training efficiency while maintaining high accuracy for large-scale NLP pipelines',
-      'Developed a web-based accent classification system by collecting and processing 1,600+ audio samples and training ML models for regional speaker detection',
-      'Published: Multilingual Evaluation of Semantic Textual Relatedness, ACL Anthology 2024',
-    ],
-    stack: ['ML', 'TensorFlow', 'PyTorch', 'OpenCV', 'Python'],
+    stack: ['PySpark', 'Hadoop', 'AWS', 'Python'],
   },
 ]
 
 export const projects = [
   {
-    title: 'Smart Course Selector AI Agent',
-    description: 'AI-powered course recommendation engine combining rule-based constraint validation (credit limits, prerequisite chains, time-conflict detection) with LangChain-orchestrated LLM decision logic to generate conflict-free schedules across 300+ courses. Delivers schedule recommendations in under a minute via a React frontend backed by a FastAPI REST API.',
+    title: 'AI Course Planning Platform',
+    description: 'Course recommendation engine covering 300+ courses, built on LangChain and the OpenAI API, with a deterministic fallback that ranks by prerequisites, credit load, and student interests whenever the API is unavailable or rate-limited. A React drag-and-drop planner handles multi-semester scheduling: prerequisite and credit-limit checks run in the browser so conflicts get fixed instantly, and full LLM-generated schedules arrive in under 60 seconds.',
     stack: ['Python', 'React', 'FastAPI', 'LangChain'],
     github: 'https://github.com/Srushti-S/Course-Selector-AI-Agent-',
     live: '',
@@ -121,8 +145,8 @@ export const projects = [
   },
   {
     title: 'Chicago Food Safety Inspections Dashboard',
-    description: 'Full-stack data platform to manage and analyse food inspection data with REST APIs, database schemas, and frontend components for real-time filtering and visualisation.',
-    stack: ['React', 'Node.js', 'MongoDB'],
+    description: 'Interface and integration layer that makes 250,000+ Chicago food-inspection records searchable by facility and risk level through Express APIs and PostgreSQL. Interactive maps and Chart.js dashboards break the records down by risk, and marker clustering keeps the city-wide map responsive.',
+    stack: ['React', 'TypeScript', 'Express', 'PostgreSQL', 'PostGIS'],
     github: 'https://github.com/Srushti-S/CDPH-food-inspections/tree/main',
     live: '',
     highlight: false,
@@ -140,8 +164,8 @@ export const projects = [
 export const skills = {
   languages: ['Python', 'JavaScript', 'TypeScript', 'SQL', 'Java', 'PHP', 'C++', 'HTML', 'CSS'],
   frontend: ['React', 'Next.js'],
-  backend: ['Node.js', 'FastAPI', 'BullMQ', 'Redis', 'JWT', 'RBAC', 'MCP Server'],
-  databases: ['PostgreSQL', 'MySQL', 'MongoDB', 'Prisma ORM'],
-  cloud: ['AWS', 'Docker', 'CI/CD (GitHub Actions)', 'Git', 'PySpark', 'Hadoop', 'Ab Initio'],
-  ai: ['LangChain', 'OpenAI API', 'A2A Agent Framework', 'spaCy', 'NLTK'],
+  backend: ['Node.js', 'Express', 'FastAPI', 'BullMQ', 'Redis', 'JWT', 'RBAC', 'MCP Server'],
+  databases: ['PostgreSQL', 'MySQL', 'MongoDB', 'PostGIS', 'Prisma ORM'],
+  cloud: ['AWS', 'Azure', 'Docker', 'Kubernetes', 'CI/CD (GitHub Actions)', 'Git', 'PySpark', 'Hadoop'],
+  ai: ['LangChain', 'OpenAI API', 'Azure LLM', 'A2A Agent Framework', 'PyTorch', 'HuggingFace Transformers', 'spaCy', 'NLTK'],
 }
