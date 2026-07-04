@@ -17,8 +17,8 @@ export const LoadingProvider = ({
   children,
 }: PropsWithChildren<{ resumeLenis?: () => void }>) => {
   const [isLoading] = useState(false);
-  const setIsLoading = (_: boolean) => {};
-  const setLoading   = (_: number)  => {};
+  const setIsLoading = () => {};
+  const setLoading   = () => {};
 
   const value = { isLoading, setIsLoading, setLoading };
 

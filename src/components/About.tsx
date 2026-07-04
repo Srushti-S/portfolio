@@ -2,13 +2,11 @@ import "./styles/About.css";
 import { personal } from "../data/portfolio";
 
 const About = () => {
-  const bio = Array.isArray(personal.bio)
-    ? (personal.bio as string[])[0]
-    : (personal.bio as string);
+  const paragraphs = Array.isArray(personal.bio) ? personal.bio : [personal.bio];
+  const [lead, ...rest] = paragraphs;
 
   return (
     <div className="about-section" id="about">
-      {}
       <div className="about-photo-col">
         <div className="about-photo-frame">
           <img
@@ -22,10 +20,14 @@ const About = () => {
         </div>
       </div>
 
-      {}
       <div className="about-me">
         <h3 className="title">About Me</h3>
-        <p className="para">{bio}</p>
+        <p className="para">{lead}</p>
+        {rest.map((text) => (
+          <p className="para para-sub" key={text.slice(0, 24)}>
+            {text}
+          </p>
+        ))}
       </div>
     </div>
   );

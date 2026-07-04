@@ -1,12 +1,13 @@
 import { useEffect, useState, useCallback } from "react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { gsap } from "gsap";
+import type Lenis from "lenis";
 import HoverLinks from "./HoverLinks";
 import "./styles/Navbar.css";
 
 gsap.registerPlugin(ScrollTrigger);
 
-const Navbar = ({ lenisRef }: { lenisRef: React.MutableRefObject<any> }) => {
+const Navbar = ({ lenisRef }: { lenisRef: React.MutableRefObject<Lenis | null> }) => {
   const [menuOpen, setMenuOpen] = useState(false);
 
   const closeMenu = useCallback(() => setMenuOpen(false), []);

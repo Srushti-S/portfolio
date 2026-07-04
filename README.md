@@ -13,7 +13,6 @@ Personal portfolio website showcasing my work, experience, and skills as a Full 
 | Framework | React 18 + TypeScript |
 | Build | Vite |
 | Animation | GSAP (ScrollTrigger), Lenis smooth scroll |
-| 3D | React Three Fiber / Three.js |
 | Styling | Plain CSS with custom properties, Geist font |
 | Contact form | EmailJS |
 | Deployment | Vercel |
@@ -26,7 +25,7 @@ Personal portfolio website showcasing my work, experience, and skills as a Full 
 - **About** — Bio + photo with GSAP parallax scroll
 - **Experience** — Alternating timeline with animated draw-in line
 - **My Work** — Horizontal scroll gallery with per-project SVG illustrations
-- **Tech Stack** — Dual marquee rows of skills
+- **Tech Stack** — Spotlit pyramid of skill chips
 - **Contact** — EmailJS-powered form + social links
 
 ---

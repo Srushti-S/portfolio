@@ -36,7 +36,6 @@ const Contact = () => {
       <div className="contact-container">
         <div className="contact-grid">
 
-          { }
           <div className="contact-left">
             <h2 className="contact-headline">
               Let's build<br />
@@ -48,7 +47,6 @@ const Contact = () => {
               to say hi — my inbox is always open.
             </p>
 
-            { }
             <div className="contact-links">
               <a href={`mailto:${personal.email}`} className="contact-link-row" data-cursor="disable">
                 <span className="contact-link-label">EMAIL</span>
@@ -70,19 +68,18 @@ const Contact = () => {
               </a>
             </div>
 
-            { }
             <div className="contact-badge">
               <span className="contact-badge-dot" />
-              Available for opportunites 
+              Available for opportunities
             </div>
           </div>
 
-          { }
           <form ref={formRef} onSubmit={handleSubmit} className="contact-form">
             <div className="contact-form-row">
               <div className="contact-field">
-                <label className="contact-field-label">YOUR NAME</label>
+                <label htmlFor="contact-name" className="contact-field-label">YOUR NAME</label>
                 <input
+                  id="contact-name"
                   name="user_name"
                   required
                   placeholder="Srushti Sonavane"
@@ -91,8 +88,9 @@ const Contact = () => {
                 />
               </div>
               <div className="contact-field">
-                <label className="contact-field-label">YOUR EMAIL</label>
+                <label htmlFor="contact-email" className="contact-field-label">YOUR EMAIL</label>
                 <input
+                  id="contact-email"
                   name="user_email"
                   type="email"
                   required
@@ -104,8 +102,9 @@ const Contact = () => {
             </div>
 
             <div className="contact-field">
-              <label className="contact-field-label">SUBJECT</label>
+              <label htmlFor="contact-subject" className="contact-field-label">SUBJECT</label>
               <input
+                id="contact-subject"
                 name="subject"
                 placeholder="What's on your mind?"
                 className="contact-input"
@@ -114,8 +113,9 @@ const Contact = () => {
             </div>
 
             <div className="contact-field">
-              <label className="contact-field-label">MESSAGE</label>
+              <label htmlFor="contact-message" className="contact-field-label">MESSAGE</label>
               <textarea
+                id="contact-message"
                 name="message"
                 required
                 rows={6}
@@ -139,7 +139,6 @@ const Contact = () => {
           </form>
         </div>
 
-        { }
         <div className="contact-footer">
           <span>Designed &amp; developed by <strong>Srushti Sonavane</strong></span>
           <span className="contact-copy">
