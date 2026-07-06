@@ -48,7 +48,7 @@ export function setSceneTimeline() {
         scrub: true,
         invalidateOnRefresh: true,
       },
-    }).fromTo(".career-section", { y: 0 }, { y: "20%", duration: 0.5 }, 0);
+    }).fromTo(".career-section", { y: 0 }, { y: 120, duration: 0.5 }, 0);
   });
 
   mm.add("all", () => {
@@ -68,11 +68,11 @@ export function setSceneTimeline() {
     );
 
     gsap.set(".career-info-box", { opacity: 0, y: 20 });
-    ScrollTrigger.create({
-      trigger: ".career-section",
-      start: "top 95%",
-      onEnter: () => {
-        gsap.to(".career-info-box", {
+    ScrollTrigger.batch(".career-info-box", {
+      start: "top 88%",
+      once: true,
+      onEnter: (batch) => {
+        gsap.to(batch, {
           opacity: 1,
           y: 0,
           duration: 0.6,

@@ -1,5 +1,5 @@
 import "./styles/About.css";
-import { personal } from "../data/portfolio";
+import { personal, stats } from "../data/portfolio";
 
 const About = () => {
   const paragraphs = Array.isArray(personal.bio) ? personal.bio : [personal.bio];
@@ -28,6 +28,17 @@ const About = () => {
             {text}
           </p>
         ))}
+        <div className="about-stats">
+          {stats.map((stat) => (
+            <div className="about-stat" key={stat.label}>
+              <span className="about-stat-number">
+                {stat.number}
+                {stat.suffix}
+              </span>
+              <span className="about-stat-label">{stat.label}</span>
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   );

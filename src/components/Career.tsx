@@ -1,6 +1,11 @@
 import "./styles/Career.css";
 import { experience } from "../data/portfolio";
 
+const renderBullet = (text: string) =>
+  text.split(/\*\*(.*?)\*\*/g).map((part, index) =>
+    index % 2 === 1 ? <strong key={index}>{part}</strong> : part
+  );
+
 const Career = () => {
   return (
     <div className="career-section section-container" id="career">
@@ -26,10 +31,17 @@ const Career = () => {
                     : job.period}
                 </span>
                 <h4>{job.role}</h4>
-                <h5>{job.company}</h5>
-                {job.location && (
-                  <p className="career-location">⊙ {job.location}</p>
-                )}
+                <h5>
+                  {job.company}
+                  {job.location && (
+                    <span className="career-location">⊙ {job.location}</span>
+                  )}
+                </h5>
+                <ul className="career-bullets">
+                  {job.bullets.map((bullet) => (
+                    <li key={bullet.slice(0, 40)}>{renderBullet(bullet)}</li>
+                  ))}
+                </ul>
               </div>
 
               <div className="career-node-wrap">

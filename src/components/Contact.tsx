@@ -42,9 +42,9 @@ const Contact = () => {
               <em>something together</em>
             </h2>
             <p className="contact-sub">
-              I'm currently open to full-time roles, internships, and interesting
-              collaborations. Whether you have a position to discuss or just want
-              to say hi — my inbox is always open.
+              I'm looking for full-time software engineering and AI roles.
+              Whether you have a position to discuss or just want
+              to say hi, my inbox is always open.
             </p>
 
             <div className="contact-links">
@@ -70,7 +70,7 @@ const Contact = () => {
 
             <div className="contact-badge">
               <span className="contact-badge-dot" />
-              Available for opportunities
+              Available now for full-time roles
             </div>
           </div>
 
@@ -134,7 +134,7 @@ const Contact = () => {
               {status === "idle"    && "Send message →"}
               {status === "sending" && "Sending…"}
               {status === "sent"    && "Message sent ✓"}
-              {status === "error"   && "Error — try again"}
+              {status === "error"   && "Error, try again"}
             </button>
           </form>
         </div>

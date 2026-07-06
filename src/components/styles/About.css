@@ -75,6 +75,36 @@
   margin-top: 22px;
 }
 
+.about-stats {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 18px 28px;
+  margin-top: 34px;
+}
+
+.about-stat {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.about-stat-number {
+  font-size: 30px;
+  font-weight: 600;
+  color: var(--accentColor);
+  line-height: 1;
+}
+
+.about-stat-label {
+  font-size: 12.5px;
+  letter-spacing: 0.3px;
+  color: rgba(232, 238, 242, 0.5);
+}
+
+@media only screen and (min-width: 1025px) {
+  .about-section { padding-bottom: 280px; }
+}
+
 @media only screen and (max-width: 1400px) {
   .about-photo-frame { width: 260px; height: 260px; }
   .about-photo-col   { transform: translate(-130%, -50%); }

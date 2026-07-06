@@ -13,7 +13,7 @@ const Work = () => {
           various technologies and problem domains.
         </p>
         <div className="work-grid">
-          {projects.map((project, index) => (
+          {projects.map((project) => (
             <WorkCard
               key={project.title}
               title={project.title}
@@ -21,7 +21,7 @@ const Work = () => {
               stack={project.stack ?? []}
               github={project.github}
               live={project.live}
-              index={index}
+              art={project.art}
             />
           ))}
         </div>
