@@ -1,0 +1,130 @@
+.pubs-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  z-index: 20;
+  background-color: var(--backgroundColor);
+  padding: 60px 0 40px;
+}
+
+.pubs-section h2 {
+  font-size: clamp(40px, 6vw, 70px);
+  line-height: 1;
+  font-weight: 400;
+  text-align: center;
+  color: #ffffff;
+  margin: 0 0 60px;
+}
+
+.pubs-section h2 > span {
+  background: linear-gradient(90deg, var(--accentColor), #006aff);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-weight: 600;
+}
+
+.pubs-container {
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.pubs-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+}
+
+.pub-card {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding: 26px 28px;
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.02);
+  transition: border-color 0.3s, background 0.3s, transform 0.3s;
+}
+
+.pub-card:hover {
+  border-color: rgba(0, 229, 204, 0.35);
+  background: rgba(0, 229, 204, 0.04);
+  transform: translateY(-3px);
+}
+
+.pub-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+}
+
+.pub-credit {
+  display: inline-flex;
+  align-items: center;
+  background: rgba(0, 229, 204, 0.08);
+  border: 1px solid rgba(0, 229, 204, 0.22);
+  border-radius: 50px;
+  padding: 3px 12px;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.4px;
+  color: var(--accentColor);
+}
+
+.pub-venue {
+  font-size: 12.5px;
+  color: rgba(232, 238, 242, 0.45);
+  letter-spacing: 0.3px;
+}
+
+.pub-card h4 {
+  font-size: 17px;
+  font-weight: 500;
+  line-height: 1.5;
+  margin: 0;
+  color: #e8eef2;
+}
+
+.pub-arrow {
+  margin-left: 6px;
+  vertical-align: middle;
+  color: var(--accentColor);
+}
+
+.pubs-artifacts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px 28px;
+  justify-content: center;
+  margin-top: 28px;
+}
+
+.pubs-artifacts a {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 13.5px;
+  letter-spacing: 0.3px;
+  color: rgba(232, 238, 242, 0.55);
+  transition: color 0.3s;
+}
+
+.pubs-artifacts a:hover {
+  color: var(--accentColor);
+}
+
+@media only screen and (max-width: 900px) {
+  .pubs-grid { grid-template-columns: 1fr; }
+  .pubs-container { width: calc(100% - 30px); }
+  .pubs-section { padding: 40px 0 30px; }
+}
+
+@media only screen and (max-width: 600px) {
+  .pubs-section h2 { font-size: 36px; margin-bottom: 36px; }
+  .pub-card { padding: 20px; }
+  .pub-card h4 { font-size: 15px; }
+  .pubs-artifacts { flex-direction: column; align-items: center; gap: 10px; }
+}

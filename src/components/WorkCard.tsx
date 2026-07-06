@@ -133,12 +133,44 @@ const EventIllustration = () => (
   </svg>
 );
 
-const illustrations = [
-  DashboardIllustration,
-  NeuralIllustration,
-  RentalIllustration,
-  EventIllustration,
-];
+const PipelineIllustration = () => (
+  <svg viewBox="0 0 320 160" xmlns="http://www.w3.org/2000/svg" className="wc-illustration">
+    {[
+      { x: 14,  label: "READ",    sub: "5 FMT"  },
+      { x: 92,  label: "CHECK",   sub: "STOCK"  },
+      { x: 170, label: "APPROVE", sub: "RISK"   },
+      { x: 248, label: "PAY",     sub: "LEDGER" },
+    ].map(({ x, label, sub }, i) => (
+      <g key={i}>
+        <rect x={x} y="45" width="62" height="70" rx="7"
+          fill="rgba(0,229,204,0.03)" stroke="rgba(0,229,204,0.2)" strokeWidth="1" />
+        <circle cx={x + 31} cy="67" r="9" fill="none" stroke={i === 3 ? "rgba(0,106,255,0.5)" : "rgba(0,229,204,0.4)"} strokeWidth="1.5" />
+        <circle cx={x + 31} cy="67" r="3" fill={i === 3 ? "rgba(0,106,255,0.6)" : "rgba(0,229,204,0.55)"} />
+        <text x={x + 31} y="95" textAnchor="middle" fontSize="10" fontWeight="700" fill="rgba(0,229,204,0.85)" fontFamily="monospace">{label}</text>
+        <text x={x + 31} y="107" textAnchor="middle" fontSize="8" fill="rgba(0,229,204,0.35)" fontFamily="monospace">{sub}</text>
+      </g>
+    ))}
+    {[76, 154, 232].map((x) => (
+      <g key={x}>
+        <path d={`M${x} 80 L${x + 16} 80`} stroke="rgba(0,229,204,0.45)" strokeWidth="1.5" fill="none" />
+        <polygon points={`${x + 14},77 ${x + 18},80 ${x + 14},83`} fill="rgba(0,229,204,0.45)" />
+      </g>
+    ))}
+    <rect x="14" y="18" width="130" height="14" rx="7" fill="rgba(255,100,100,0.06)" stroke="rgba(255,100,100,0.25)" strokeWidth="1" />
+    <text x="79" y="28" textAnchor="middle" fontSize="8" fill="rgba(255,120,120,0.6)" fontFamily="monospace">FRAUD BLOCKED</text>
+    <rect x="176" y="18" width="130" height="14" rx="7" fill="rgba(0,229,204,0.05)" stroke="rgba(0,229,204,0.25)" strokeWidth="1" />
+    <text x="241" y="28" textAnchor="middle" fontSize="8" fill="rgba(0,229,204,0.6)" fontFamily="monospace">CLEAN INVOICES PAID</text>
+    <text x="14" y="155" fontSize="8" fill="rgba(0,229,204,0.28)" fontFamily="monospace">MULTI-AGENT · LANGGRAPH · DETERMINISTIC PAY</text>
+  </svg>
+);
+
+const illustrations: Record<string, () => JSX.Element> = {
+  dashboard: DashboardIllustration,
+  neural: NeuralIllustration,
+  rental: RentalIllustration,
+  event: EventIllustration,
+  pipeline: PipelineIllustration,
+};
 
 interface WorkCardProps {
   title: string;
@@ -146,7 +178,7 @@ interface WorkCardProps {
   stack: string[];
   github?: string;
   live?: string;
-  index: number;
+  art?: string;
 }
 
 const GithubIcon = () => (
@@ -155,8 +187,8 @@ const GithubIcon = () => (
   </svg>
 );
 
-const WorkCard = ({ title, description, stack, github, live, index }: WorkCardProps) => {
-  const Illustration = illustrations[index % illustrations.length];
+const WorkCard = ({ title, description, stack, github, live, art }: WorkCardProps) => {
+  const Illustration = illustrations[art ?? "dashboard"] ?? DashboardIllustration;
 
   return (
     <div className="wc-card">

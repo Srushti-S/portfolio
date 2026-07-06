@@ -3,8 +3,10 @@ import About from "./About";
 import Career from "./Career";
 import Contact from "./Contact";
 import Cursor from "./Cursor";
+import Education from "./Education";
 import Landing from "./Landing";
 import Navbar from "./Navbar";
+import Publications from "./Publications";
 import SocialIcons from "./SocialIcons";
 import Work from "./Work";
 import TechStack from "./TechStack";
@@ -74,6 +76,8 @@ const MainContainer = ({ children }: PropsWithChildren) => {
             <Landing>{!isDesktopView && children}</Landing>
             <About />
             <Career />
+            <Publications />
+            <Education />
             <Work />
             <TechStack />
             <Contact />
