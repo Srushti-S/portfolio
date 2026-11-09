@@ -7,6 +7,13 @@ import "./styles/Navbar.css";
 
 gsap.registerPlugin(ScrollTrigger);
 
+const NAV_LINKS = [
+  { href: "#about", label: "ABOUT" },
+  { href: "#career", label: "EXPERIENCE" },
+  { href: "#work", label: "PROJECTS" },
+  { href: "#contact", label: "CONTACT" },
+];
+
 const Navbar = ({ lenisRef }: { lenisRef: React.MutableRefObject<Lenis | null> }) => {
   const [menuOpen, setMenuOpen] = useState(false);
 
@@ -51,26 +58,13 @@ const Navbar = ({ lenisRef }: { lenisRef: React.MutableRefObject<Lenis | null> }
         </button>
 
         <ul>
-          <li>
-            <a data-href="#about" href="#about" onClick={closeMenu}>
-              <HoverLinks text="ABOUT" />
-            </a>
-          </li>
-          <li>
-            <a data-href="#career" href="#career" onClick={closeMenu}>
-              <HoverLinks text="EXPERIENCE" />
-            </a>
-          </li>
-          <li>
-            <a data-href="#work" href="#work" onClick={closeMenu}>
-              <HoverLinks text="PROJECT" />
-            </a>
-          </li>
-          <li>
-            <a data-href="#contact" href="#contact" onClick={closeMenu}>
-              <HoverLinks text="CONTACT" />
-            </a>
-          </li>
+          {NAV_LINKS.map(({ href, label }) => (
+            <li key={href}>
+              <a data-href={href} href={href} onClick={closeMenu}>
+                <HoverLinks text={label} />
+              </a>
+            </li>
+          ))}
         </ul>
       </div>
 

@@ -15,7 +15,7 @@ const Education = () => {
               <h4>{edu.degree}</h4>
               <h5>{edu.school}</h5>
               <p className="education-meta">
-                {edu.location} · {edu.period}
+                {edu.location} · {edu.period} · GPA {edu.gpa}
               </p>
               <div className="education-coursework">
                 {edu.coursework.map((course) => (

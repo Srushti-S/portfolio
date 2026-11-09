@@ -2,13 +2,13 @@
   position: relative;
   z-index: 20;
   background-color: var(--backgroundColor);
-  padding: 100px 0 120px;
+  padding: 100px 0 110px;
 }
 
-.work-container {
-  max-width: 1200px;
+.work-container.section-container {
+  width: min(1200px, calc(100% - 80px));
   margin: 0 auto;
-  padding: 0 40px;
+  padding: 0;
 }
 
 .work-heading {
@@ -25,22 +25,24 @@
   height: 3px;
   background: var(--accentColor);
   border-radius: 2px;
-  margin-bottom: 20px;
-}
-
-.work-subtitle {
-  font-size: clamp(14px, 1.5vw, 16px);
-  color: rgba(232, 238, 242, 0.4);
-  margin: 0 0 50px;
-  max-width: 600px;
-  line-height: 1.6;
-  font-family: "Geist", sans-serif;
+  margin-bottom: 40px;
 }
 
 .work-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  gap: 28px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 24px;
+}
+
+.work-grid > .wc-card {
+  width: calc((100% - 48px) / 3);
+}
+
+@media only screen and (max-width: 1100px) {
+  .work-grid > .wc-card {
+    width: calc((100% - 24px) / 2);
+  }
 }
 
 @media only screen and (max-width: 768px) {
@@ -48,17 +50,22 @@
     padding: 70px 0 80px;
   }
 
-  .work-container {
-    padding: 0 20px;
-  }
-
-  .work-subtitle {
-    margin-bottom: 36px;
+  .work-container.section-container {
+    width: calc(100% - 40px);
   }
 
   .work-grid {
-    grid-template-columns: 1fr;
-    gap: 24px;
+    gap: 20px;
+  }
+
+  .work-grid > .wc-card {
+    width: calc((100% - 20px) / 2);
+  }
+}
+
+@media only screen and (max-width: 640px) {
+  .work-grid > .wc-card {
+    width: 100%;
   }
 }
 
@@ -71,12 +78,11 @@
     font-size: 30px;
   }
 
-  .work-subtitle {
-    font-size: 13px;
-    margin-bottom: 28px;
+  .work-container.section-container {
+    width: calc(100% - 24px);
   }
 
   .work-grid {
-    gap: 20px;
+    gap: 16px;
   }
 }

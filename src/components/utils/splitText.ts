@@ -1,5 +1,6 @@
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { prefersReducedMotion } from "./motion";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -48,7 +49,7 @@ let refreshListenerAdded = false;
 
 export default function setSplitText() {
   ScrollTrigger.config({ ignoreMobileResize: true });
-  if (window.innerWidth < 600) return;
+  if (window.innerWidth < 600 || prefersReducedMotion()) return;
 
   const paras: NodeListOf<SplitElement> = document.querySelectorAll(".para");
   const titles: NodeListOf<SplitElement> = document.querySelectorAll(".title");

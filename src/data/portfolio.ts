@@ -1,27 +1,24 @@
 export const personal = {
   name: 'Srushti Sonavane',
-  firstName: 'Srushti',
-  lastName: 'Sonavane',
-  title: 'Full Stack Software Engineer',
-  tagline: 'React · Node.js · Backend Systems',
+  role: 'Software Engineer · AI & Backend',
+  pitch: "I'm a software engineer working across backend systems and applied AI. I enjoy turning messy, real-world problems into reliable software that people can depend on.",
+  openTo: 'Open to software engineering and AI roles',
+  now: 'Software Engineer at Korrus · MS Computer Science, Indiana University',
   bio: [
-    "Hi, I'm Srushti, a full-stack engineer with a Master's in Computer Science from Indiana University Bloomington, where I spent a year building web systems for the Graduate School that 70+ departments use. Right now I'm at the DSAIL Lab, researching security for agentic AI.",
-    "Most of what I know comes from shipping real things: a teacher-training portal for the Maharashtra State Government that 550,000+ teachers register through, a chatbot on the IU website that answers thousands of student questions a day, and ETL pipelines at Barclays that moved financial compliance data from Hadoop to AWS. On the research side, I've published twice at ACL Anthology, first author in 2024, mostly on NLP for low-resource languages.",
-    "Outside code, I'm energised by hard problems, good coffee, and the quiet satisfaction of a system that just works.",
+    "Right now I'm a software engineer at Korrus. My audit system checks six business systems every week and has caught problems the teams that own the data confirmed in writing.",
+    "Before that, I finished my Master's in Computer Science at Indiana University Bloomington, shipped a live AI chatbot on the university website built as A2A agents with an MCP server, and benchmarked agent-skill security scanners at the DSAIL Lab.",
+    "Earlier, I built the Maharashtra State Government's teacher-training portal that 550,000+ teachers registered through, and published twice at ACL Anthology, first author in 2024. Outside code, I'm energised by hard problems, good coffee, and the quiet satisfaction of a system that just works.",
   ],
   email: 'srushtisonavane@gmail.com',
-  phone: '+1 9303337732',
-  location: 'Bloomington, Indiana',
   linkedin: 'https://linkedin.com/in/srushtis7',
   github: 'https://github.com/Srushti-S',
-  openToWork: true,
 }
 
 export const stats = [
-  { number: '3.8', suffix: '/4', label: 'GPA at IU Bloomington' },
+  { number: '$437K', suffix: '', label: 'Stalled deals recovered from one finding' },
+  { number: '25', suffix: '', label: 'Checks running unattended every week' },
   { number: '550K', suffix: '+', label: 'Teachers on the TriFrnd portal' },
   { number: '2', suffix: '', label: 'ACL Anthology publications' },
-  { number: '70', suffix: '+', label: 'University departments served' },
 ]
 
 export const education = [
@@ -30,6 +27,7 @@ export const education = [
     school: 'Indiana University Bloomington',
     location: 'Bloomington, Indiana · USA',
     period: 'Aug 2024 – May 2026',
+    gpa: '3.8/4.0',
     coursework: ['Software Engineering', 'Algorithms', 'Operating Systems', 'Databases', 'Machine Learning'],
     badge: 'MS · Computer Science',
   },
@@ -38,6 +36,7 @@ export const education = [
     school: 'Savitribai Phule Pune University',
     location: 'Pune, Maharashtra · India',
     period: 'Sep 2021 – Jun 2024',
+    gpa: '3.6/4.0',
     coursework: ['Data Structures', 'Computer Networks', 'Object Programming', 'Cloud', 'Distributed Systems'],
     badge: 'BE · Computer Engineering',
   },
@@ -45,14 +44,26 @@ export const education = [
 
 export const experience = [
   {
+    role: 'Software Engineer',
+    company: 'Korrus',
+    location: '',
+    period: 'Aug 2026 – Present',
+    current: true,
+    bullets: [
+      'Built a read-only audit system in **Python** over 6 business systems (**NetSuite**, **HubSpot**, **Shopify**, **Stripe**, **Avalara**, **Arena PLM**), turning exploratory **Claude Code** passes into 25 deterministic **YAML**-defined checks that run unattended each week over dated API snapshots.',
+      'Surfaced defects confirmed in writing by the teams that own the data, including a customer master that was 69% duplicate and a silent CRM sync failure that let IT recover 45 stalled opportunities worth $437K.',
+      "Owned data mapping for an acquired company's Macola and **Salesforce** migration to **NetSuite** at the CEO's request, mapping 145 Salesforce fields and building an item-matching tool that IT adopted over its own to match 604 items.",
+    ],
+  },
+  {
     role: 'Research Assistant · Agentic AI Security',
     company: 'DSAIL Lab, Indiana University',
     location: 'Bloomington, USA',
-    period: 'Jan 2026 – Present',
-    current: true,
+    period: 'Mar 2026 – Aug 2026',
+    current: false,
     bullets: [
-      'Working on the agent coordination layer of an **LLM-RL** red teaming framework for **SOAR** security systems, replacing the decoupled planner-controller handoff with a real-time feedback loop that adapts attack strategies across episodes.',
-      'Surveyed 12 AI agent skill platforms and led a vulnerability scanner comparison for the first academic security study of the agent skills ecosystem, covering 900,000+ skills.',
+      "Benchmarked 11 agent-skill security scanners head-to-head, finding 0.15% cross-scanner agreement and silent-failure modes that invalidated 92% of one scanner's reported output.",
+      "Engineered a resumable **SLURM** array pipeline on IU's HPC cluster that ran 8 scan runs across 10K packages and scaled to a 265K-skill evaluation corpus.",
     ],
   },
   {
@@ -62,8 +73,9 @@ export const experience = [
     period: 'May 2025 – May 2026',
     current: false,
     bullets: [
-      'Shipped a live AI chatbot on the Indiana University website, built on an **A2A** multi-agent architecture with **Azure LLM** and an **MCP server**. It answers thousands of student queries a day across 70+ departments and cut office walk-ins by 60%.',
-      'Replaced manual form-handling across 70+ departments with **PHP**/**MySQL** pipelines and migrated 13 legacy applications to shared PHP abstraction layers over **XML** schemas.',
+      'Shipped a live AI chatbot on the Indiana University website that answers thousands of student queries a day across 70+ colleges and departments, cutting Graduate School office walk-ins by 60%.',
+      'Architected it as an **A2A** multi-agent system on **Azure LLM** and **Azure Kubernetes Service**: a routing agent classifies each query and hands it to department agents that fetch live data through an **MCP server**.',
+      'Migrated 13 legacy university applications onto shared **PHP** abstraction layers over **XML** schemas, verifying each migration with automated record-count checks.',
     ],
   },
   {
@@ -73,8 +85,9 @@ export const experience = [
     period: 'Sep 2023 – Jun 2024',
     current: false,
     bullets: [
-      'Built and ran the state teacher-training registration portal on **Next.js**, **Node.js**, and **PostgreSQL**, with a stateless API layer serving concurrent traffic from 550,000+ registered teachers across 35 districts.',
-      'Wrote a **Node.js** batch allocation engine assigning teachers across 960 training batches, replacing a fully manual process with real-time dashboards and audit trails.',
+      'Led the state teacher-training registration portal on **Next.js**, **Node.js**, and **PostgreSQL**, with a stateless API layer serving 550,000+ registered teachers across 35 districts.',
+      'Wrote a **Node.js** batch allocation engine that assigns teachers across 960 training batches, replacing a fully manual process with real-time dashboards and audit trails.',
+      'Implemented role-based access control across three permission tiers and gated all 35 district rollouts behind **Jest** integration tests.',
     ],
   },
   {
@@ -104,7 +117,7 @@ export const experience = [
     period: 'Jun 2023 – Aug 2023',
     current: false,
     bullets: [
-      'Engineered a **PySpark** ETL pipeline migrating multi-terabyte compliance datasets (FCA, GDPR, financial crime reporting) from on-premise **Hadoop** clusters to **AWS**, and packaged reusable PySpark utilities that two other teams adopted as their standard template.',
+      'Built a **PySpark** pipeline that moved multi-terabyte compliance datasets (FCA, GDPR, financial crime reporting) from on-premise **Hadoop** clusters to **AWS**, and packaged reusable PySpark utilities that two other teams adopted as their standard template.',
     ],
   },
 ]
@@ -133,48 +146,53 @@ export const artifacts = [
 
 export const projects = [
   {
-    title: 'AI Course Planning Platform',
-    description: 'Course recommendation engine covering 300+ courses, built on LangChain and the OpenAI API, with a deterministic fallback that ranks by prerequisites, credit load, and student interests whenever the API is unavailable or rate-limited. A React drag-and-drop planner handles multi-semester scheduling: prerequisite and credit-limit checks run in the browser so conflicts get fixed instantly, and full LLM-generated schedules arrive in under 60 seconds.',
-    stack: ['Python', 'React', 'FastAPI', 'LangChain'],
-    github: 'https://github.com/Srushti-S/Course-Selector-AI-Agent-',
-    live: 'https://course-planner-frontend.onrender.com/',
-    highlight: true,
-    art: 'neural',
-  },
-  {
     title: 'Invoice Processing Automation',
-    description: 'Multi-agent pipeline built on LangGraph that reads invoices in five file formats, checks them against inventory, and decides whether to pay. The money decisions are deterministic Python covered by tests, so a bad model response can never release a payment, and a ledger blocks paying the same invoice twice. Runs offline with no API key.',
-    stack: ['Python', 'LangGraph', 'SQLite', 'LLM'],
+    summary: 'LangGraph pipeline that reads invoices in 5 formats, checks them against inventory, and decides whether to pay.',
+    decision: 'Payment approval is plain, tested Python. The LLM only extracts fields and flags fraud, so it can never release money, and a ledger blocks double payments.',
+    metrics: ['56 offline tests', '5 file formats', 'No API key needed'],
+    stack: ['Python', 'LangGraph', 'FastAPI', 'Pydantic', 'React'],
     github: 'https://github.com/Srushti-S/invoice-autopilot',
     live: 'https://invoice-autopilot-henna.vercel.app/',
-    highlight: false,
     art: 'pipeline',
   },
   {
-    title: 'Rental & Services Management System',
-    description: '9-service microservices system with a Node.js API gateway enforcing JWT authentication, role-based access control and per-route rate limiting, with each service independently containerised and orchestrated via Docker Compose. Designed normalised PostgreSQL schemas achieving sub-200ms query response times under concurrent load.',
-    stack: ['React', 'Node.js', 'PostgreSQL', 'Docker'],
-    github: 'https://github.com/Srushti-S/Multi-Tenant-Rental-Platform',
-    live: '',
-    highlight: false,
-    art: 'rental',
+    title: 'AI Course Planning Platform',
+    summary: 'Recommends courses with LangChain and the OpenAI API, then lets students drag them into a multi-semester plan.',
+    decision: 'Every LLM plan is validated on the server, with a deterministic fallback when the API is down. An offline eval over 24 profiles checks for prerequisite violations.',
+    metrics: ['42 courses', '24-profile eval', 'Deterministic fallback'],
+    stack: ['Python', 'FastAPI', 'LangChain', 'React'],
+    github: 'https://github.com/Srushti-S/Course-Selector-AI-Agent-',
+    live: 'https://course-planner-frontend.onrender.com/',
+    art: 'neural',
   },
   {
     title: 'Chicago Food Safety Inspections Dashboard',
-    description: 'Interface and integration layer that makes 250,000+ Chicago food-inspection records searchable by facility and risk level through Express APIs and PostgreSQL. Interactive maps and Chart.js dashboards break the records down by risk, and marker clustering keeps the city-wide map responsive.',
+    summary: 'Makes 250,000+ Chicago food-inspection records searchable by facility and risk level, with maps and Chart.js dashboards.',
+    decision: 'Express APIs over PostgreSQL and PostGIS do the searching on the server, and marker clustering keeps the city-wide map fast.',
+    metrics: ['250K+ records', 'City-wide map'],
     stack: ['React', 'TypeScript', 'Express', 'PostgreSQL', 'PostGIS'],
     github: 'https://github.com/Srushti-S/CDPH-food-inspections',
     live: '',
-    highlight: false,
     art: 'dashboard',
   },
   {
+    title: 'Rental & Services Management System',
+    summary: 'Rental and services platform split into 9 containerised services, run together with Docker Compose.',
+    decision: 'One Node.js API gateway handles JWT auth, role-based access and rate limits for every service, over PostgreSQL schemas that answer in under 200ms.',
+    metrics: ['9 services', 'Sub-200ms queries'],
+    stack: ['Node.js', 'PostgreSQL', 'Docker', 'React'],
+    github: 'https://github.com/Srushti-S/Multi-Tenant-Rental-Platform',
+    live: '',
+    art: 'rental',
+  },
+  {
     title: "Pulzion'23 Event Management System",
-    description: 'High-traffic event management system handling thousands of registrations with optimised backend APIs and database queries for reliable performance under peak load.',
+    summary: "Registration and event management system for PICT ACM's Pulzion'23, handling thousands of registrations.",
+    decision: 'Optimised backend APIs and database queries so the site stayed reliable under peak registration load.',
+    metrics: ['Thousands of registrations'],
     stack: ['Node.js', 'PostgreSQL', 'Next.js'],
     github: '',
     live: 'https://pict.acm.org/pulzion/',
-    highlight: false,
     art: 'event',
   },
 ]

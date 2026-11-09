@@ -42,9 +42,9 @@ const Contact = () => {
               <em>something together</em>
             </h2>
             <p className="contact-sub">
-              I'm looking for full-time software engineering and AI roles.
-              Whether you have a position to discuss or just want
-              to say hi, my inbox is always open.
+              I'm open to software engineering and AI roles. Whether you
+              have a position to discuss or just want to say hi, my inbox
+              is always open.
             </p>
 
             <div className="contact-links">
@@ -70,7 +70,7 @@ const Contact = () => {
 
             <div className="contact-badge">
               <span className="contact-badge-dot" />
-              Available now for full-time roles
+              {personal.openTo}
             </div>
           </div>
 
@@ -82,7 +82,7 @@ const Contact = () => {
                   id="contact-name"
                   name="user_name"
                   required
-                  placeholder="Srushti Sonavane"
+                  placeholder="Jane Doe"
                   className="contact-input"
                   data-cursor="disable"
                 />

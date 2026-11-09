@@ -1,49 +1,43 @@
-# Srushti Sonavane — Portfolio
+# Srushti Sonavane | Portfolio
 
-**Live →** [Srushti Sonavane](https://srushtis.vercel.app/)
+Live site: [srushtis.vercel.app](https://srushtis.vercel.app/)
 
-Personal portfolio website showcasing my work, experience, and skills as a Full Stack Software Engineer with an MS in Computer Science at Indiana University Bloomington.
-
----
+My personal portfolio. I'm a software engineer working across backend systems and applied AI, with an MS in Computer Science from Indiana University Bloomington.
 
 ## Tech Stack
 
 | Layer | Tools |
 |---|---|
-| Framework | React 18 + TypeScript |
+| Framework | React 18, TypeScript |
 | Build | Vite |
-| Animation | GSAP (ScrollTrigger), Lenis smooth scroll |
-| Styling | Plain CSS with custom properties, Geist font |
+| Animation | GSAP (ScrollTrigger), Lenis |
+| Styling | CSS, Geist font |
 | Contact form | EmailJS |
-| Deployment | Vercel |
-
----
+| Hosting | Vercel |
 
 ## Sections
 
-- **Landing** — Animated hero with name reveal and cycling role text
-- **About** — Bio + photo with GSAP parallax scroll
-- **Experience** — Alternating timeline with animated draw-in line
-- **My Work** — Horizontal scroll gallery with per-project SVG illustrations
-- **Tech Stack** — Spotlit pyramid of skill chips
-- **Contact** — EmailJS-powered form + social links
+- Hero
+- About
+- Experience
+- Projects
+- Research and Publications
+- Skills
+- Education
+- Contact
 
----
-
-## Getting Started
+## Run Locally
 
 ```bash
-# Install dependencies
 npm install
-
-# Start dev server
 npm run dev
-
-# Production build
-npm run build
 ```
 
----
+Production build:
+
+```bash
+npm run build
+```
 
 ## Environment Variables
 
@@ -55,43 +49,40 @@ VITE_EMAILJS_TEMPLATE_ID=your_template_id
 VITE_EMAILJS_PUBLIC_KEY=your_public_key
 ```
 
-These are configured as Environment Variables in Vercel for the deployed version.
-
----
+The same three variables are set in the Vercel project settings for the live site.
 
 ## Project Structure
 
 ```
 src/
 ├── components/
-│   ├── styles/         
-│   ├── utils/          
+│   ├── styles/
+│   ├── utils/
 │   ├── About.tsx
 │   ├── Career.tsx
 │   ├── Contact.tsx
 │   ├── Cursor.tsx
+│   ├── Education.tsx
+│   ├── HoverLinks.tsx
 │   ├── Landing.tsx
 │   ├── MainContainer.tsx
 │   ├── Navbar.tsx
-│   ├── SocialIcons.tsx
+│   ├── Publications.tsx
+│   ├── ResumeButton.tsx
+│   ├── RunPanel.tsx
 │   ├── TechStack.tsx
 │   ├── Work.tsx
-│   └── WorkCard.tsx     
+│   └── WorkCard.tsx
 ├── context/
 │   └── LoadingProvider.tsx
 ├── data/
-│   └── portfolio.ts     
-├── three/
-│   └── Scene.tsx        
+│   ├── portfolio.ts
+│   └── runs.ts
 ├── App.tsx
-├── index.css            
+├── index.css
 └── main.tsx
 ```
 
----
-
 ## Deployment
 
-Deployed on **Vercel** with automatic deploys on push to `main`.
-
-Make sure to add the three `VITE_EMAILJS_*` variables under **Project → Settings → Environment Variables** in your Vercel dashboard.
+Vercel deploys automatically on every push to `main`.

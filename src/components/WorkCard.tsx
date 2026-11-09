@@ -28,11 +28,11 @@ const DashboardIllustration = () => (
     {[[64,85],[104,105],[144,55],[184,90],[224,65],[264,110]].map(([cx,cy],i) => (
       <circle key={i} cx={cx} cy={cy} r="3" fill="#006aff" opacity="0.8" />
     ))}
-    <text x="30" y="156" fontSize="9" fill="rgba(0,229,204,0.35)" fontFamily="monospace">INSPECTIONS / DISTRICT</text>
+    <text x="30" y="156" fontSize="9" fill="rgba(0,229,204,0.35)" fontFamily="monospace">INSPECTIONS / RISK LEVEL</text>
     <rect x="218" y="10" width="86" height="28" rx="6"
       fill="rgba(0,229,204,0.06)" stroke="rgba(0,229,204,0.2)" strokeWidth="1" />
-    <text x="227" y="21" fontSize="8" fill="rgba(0,229,204,0.5)" fontFamily="monospace">PASS RATE</text>
-    <text x="227" y="33" fontSize="11" fontWeight="700" fill="#00e5cc" fontFamily="monospace">94.2 %</text>
+    <text x="227" y="21" fontSize="8" fill="rgba(0,229,204,0.5)" fontFamily="monospace">RECORDS</text>
+    <text x="227" y="33" fontSize="11" fontWeight="700" fill="#00e5cc" fontFamily="monospace">250K+</text>
   </svg>
 );
 
@@ -40,7 +40,7 @@ const NeuralIllustration = () => (
   <svg viewBox="0 0 320 160" xmlns="http://www.w3.org/2000/svg" className="wc-illustration">
     {([[60,40],[60,80],[60,120]] as number[][]).flatMap(([x1,y1]) =>
       ([[160,30],[160,65],[160,100],[160,135]] as number[][]).map(([x2,y2],j) => (
-        <line key={`a${x1}${j}`} x1={x1} y1={y1} x2={x2} y2={y2}
+        <line key={`a${x1}-${y1}-${j}`} x1={x1} y1={y1} x2={x2} y2={y2}
           stroke="rgba(0,229,204,0.1)" strokeWidth="1" />
       ))
     )}
@@ -174,7 +174,9 @@ const illustrations: Record<string, () => JSX.Element> = {
 
 interface WorkCardProps {
   title: string;
-  description: string;
+  summary: string;
+  decision?: string;
+  metrics?: string[];
   stack: string[];
   github?: string;
   live?: string;
@@ -187,7 +189,7 @@ const GithubIcon = () => (
   </svg>
 );
 
-const WorkCard = ({ title, description, stack, github, live, art }: WorkCardProps) => {
+const WorkCard = ({ title, summary, decision, metrics = [], stack, github, live, art }: WorkCardProps) => {
   const Illustration = illustrations[art ?? "dashboard"] ?? DashboardIllustration;
 
   return (
@@ -199,7 +201,23 @@ const WorkCard = ({ title, description, stack, github, live, art }: WorkCardProp
 
       <div className="wc-body">
         <h3 className="wc-title">{title}</h3>
-        <p className="wc-desc">{description}</p>
+
+        {metrics.length > 0 && (
+          <div className="wc-metrics">
+            {metrics.map((metric) => (
+              <span key={metric} className="wc-metric">{metric}</span>
+            ))}
+          </div>
+        )}
+
+        <p className="wc-desc">{summary}</p>
+
+        {decision && (
+          <div className="wc-decision">
+            <span className="wc-decision-label">Key decision</span>
+            <p>{decision}</p>
+          </div>
+        )}
 
         <div className="wc-tags">
           {stack.map((tech) => (
@@ -216,7 +234,7 @@ const WorkCard = ({ title, description, stack, github, live, art }: WorkCardProp
           )}
           {live && (
             <a href={live} target="_blank" rel="noreferrer" className="wc-link-btn wc-link-btn--live">
-              Live ↗
+              Live demo ↗
             </a>
           )}
         </div>
